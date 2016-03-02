@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>The OpenCV Saga</title>
+    <meta name="description" content="Tale of a Tiger - As above, so below. As within, so without." />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+        <link rel="canonical" href="/" />
+    <meta name="referrer" content="origin" />
+    <link rel="next" href="/page2/" />
+
+    <meta property="og:site_name" content="Tale of a Tiger" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Tale of a Tiger" />
+    <meta property="og:description" content="Developer Chronicles" />
+    <meta property="og:url" content="/" />
+    <meta property="og:image" content="/assets/images/site-cover.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tale of a Tiger" />
+    <meta name="twitter:description" content="Developer Chronicles" />
+    <meta name="twitter:url" content="/" />
+    <meta name="twitter:image:src" content="/assets/images/site-cover.jpg" />
+
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Tale of a Tiger",
+    "url": "/",
+    "image": "/assets/images/site-cover.jpg",
+    "description": "Developer Chronicles"
+}
+    </script>
+
+    <meta name="generator" content="Jekyll 3.0.0" />
+    <link rel="alternate" type="application/rss+xml" title="Tale of a Tiger" href="/rss.xml" />
+
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-about " role="presentation"><a href="/stuff-i-do">Stuff I do</a></li>
+        <!-- <li class="nav-fables " role="presentation"><a href="/tag/fables">Fables</a></li>
+        <li class="nav-speeches " role="presentation"><a href="/tag/speeches">Speeches</a></li>
+        <li class="nav-fiction " role="presentation"><a href="/tag/fiction">Fiction</a></li> -->
+        <li class="nav-author " role="presentation"><a href="/author/tk">About Me</a></li>
+    </ul>
+    <!-- <a class="subscribe-button icon-feed" href="/rss.xml">Subscribe</a> -->
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/post_covers/opencv-cover.jpg) ">
+    <nav class="main-nav  overlay  clearfix">
+        <a class="blog-logo" href="/"><img src="/assets/images/tk-logo.png" alt="Blog Logo" /></a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">The OpenCV Saga</h1>
+            <section class="post-meta">
+            <!-- <a href='/'>Sidhant Sharma</a> -->
+            <time class="post-date" datetime="2015-10-20">October 20, 2015</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                 | on
+                
+                    
+                       <a href='/tag/OpenCV'>OpenCV</a>,
+                    
+                
+                    
+                       <a href='/tag/Python'>Python</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <h3>Ch. 1 : I See You</h3>
+
+<p>College. A temple of knowledge. A place to learn and grow.</p>
+
+<p>Well, not quite. At least not in my experience. Though there isn&#39;t much I&#39;ve gained directly from attending classes (save for the cursory overview to a few subjects), I do admit I have had tonnes of opportunities to learn. And being the ever-curious soul I am, I didn&#39;t miss out out on any.</p>
+
+<p>One such subject that has captured my imagination quite recently is Computer Vision, the magical technology that can make a computer &#39;see&#39;.</p>
+
+<p>It started about 2 weeks ago, when my friends and I were brainstorming on what to present as a Minor project. We were running late already (thanks to our first Minor project idea <a href="#minor-one"><sup>1</sup></a>). So, while we were randomly pitching ideas to each other, I suggested making an android application that can print the details of the objects in focus on the screen, in real time. And at this point, we all hopped on to the computer vision train, waving at the stations (aka project ideas) as we passed them. This we did till we reached a project idea that was (seemingly) small, practical and achievable within the given time frame.
+The idea was simple. A basic software that will translate your hand gestures into commands for your computer. There was a discussion on what specific type of commands it would support (from general control like navigation through the file system, controlling brightness, volume etc to simply controlling a music application). It was later decided that we will support a rather wild-card entry, Google Chrome browser.
+To anyone who follows this blog, Google Chrome would be a surprise. Yes, I know me+Chrome is not a duo you see frequently, but as they say, anything for science.</p>
+
+<p>So, that&#39;s enough backstory. Now on to the good stuff. Being noobs in the field of image processing, we decided to stay with python, for it was more comfortable to most of the team (excluding me, I prefer C/C++. Always.) Anyway, the development started and we did our research,found and discussed some techniques and algorithms.</p>
+
+<p>Fast forward - Coding. The real good stuff.
+There are a bunch of OpenCV tutorials available on the Internet, like <a href="http://opencvpython.blogspot.in/">this one</a> and <a href="https://www.pyimagesearch.com/">this one</a>. And of course, never forget to RTFM (OpenCV docs). This gave me a good head start for the task at hand.</p>
+
+<p>I won&#39;t be going into details of the installation process (mainly because it is too boring and I need to catch up on sleep). So, hope you&#39;ll figure it out. (Psst.. unlike me, Google doesn&#39;t sleep)</p>
+
+<h4>Say &#39;Cheese&#39;!</h4>
+
+<p>First things first. Since our aim is to process gestures in real time, we obviously something to give us some sort of a real-time video input. A modern day contraption that can somehow capture the essence of vision and translate it into a digital stream of bytes. Something so..... screw it, enough Dora-the-explorer. We need a camera. A webcam is the first choice, for it is usually already there on your laptop. It gets tricky when you don&#39;t have a laptop, or a dedicated webcam, as happened with one of our teammates.
+Using a webcam with OpenCV is simple, as the following snippet shows:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c">## Create a capture device instance</span>
+<span class="c">## For more:  http://docs.opencv.org/modules/highgui/doc/reading_and_writing_images_and_video.html#videocapture-videocapture</span>
+<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c">## While the capture device is open</span>
+<span class="k">while</span> <span class="n">cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+    <span class="c">## Grab a frame (current image in the memory)</span>
+    <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="c">## Process as desired</span>
+
+<span class="c">## Release camera object when done</span>
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</code></pre></div>
+<p>But not all hope is lost! Turns out, with a little bit of hacking around, it&#39;s possible to use an android device with a camera for the purpose. <a href="https://play.google.com/store/apps/details?id=com.pas.webcam">Here</a> you can find a marvelous little application, <em>IP Webcam</em>, that allows you to locally stream from your mobile camera. You can simply view the stream on the browser/VLC of another device by keying in the IP and the port of the server you run (using the app).
+The tricky part is when you need to use it as a video feed and process it in OpenCV. This is where you need to have a work-around. But don&#39;t worry, I saved you the trouble and whipped up this little script which would be useful. Just clone/download <a href="https://github.com/TigerKid001/AndroidCamFeed">this repo</a> or simply get the <code>[AndroidCamFeed](https://github.com/TigerKid001/AndroidCamFeed/blob/master/AndroidCamFeed.py)</code> file. The usage is simple and demonstrated in the <a href="https://github.com/TigerKid001/AndroidCamFeed/blob/master/AndroidCamFeed.py"><code>Example.py</code></a>. Import the module and use like you would use the cv2.VideoCapture; the interface is pretty much the same (which, by the way, is no coincidence). Here&#39;s a snippet for example:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">## Import AndroidCamFeed module</span>
+<span class="kn">from</span> <span class="nn">AndroidCamFeed</span> <span class="kn">import</span> <span class="n">AndroidCamFeed</span>
+
+<span class="c">## set host = address of server, in &lt;IP&gt;:&lt;port&gt; format</span>
+<span class="c">## Replace the string with your own server&#39;s IP and port</span>
+<span class="n">host</span> <span class="o">=</span> <span class="s">&#39;192.168.1.2:8080&#39;</span>
+
+<span class="c">## Create new ACF instance with host as parameter</span>
+<span class="n">acf</span> <span class="o">=</span> <span class="n">AndroidCamFeed</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+
+<span class="c">## While acf is open</span>
+<span class="k">while</span> <span class="n">acf</span><span class="o">.</span><span class="n">isOpened</span><span class="p">():</span>
+
+        <span class="c">## Read frame</span>
+        <span class="n">frame</span> <span class="o">=</span> <span class="n">acf</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">frame</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c">## Process frame</span>
+
+<span class="c">## Must release ACF object before exiting.</span>
+<span class="n">acf</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</code></pre></div>
+<h4>A sleight of hand</h4>
+
+<p>The next step we take towards the goal is detecting the hand. This can be tricky and there a many algorithms that try to achieve this. In my personal experience, transforming the image into Y-Cr-Cb color space is effective, especially when coupled with Gaussian Blur and thresholding using Otsu algorithm. Don&#39;t be overwhelmed, we&#39;ll take them all down piece by piece. Starting with color spaces.</p>
+
+<p>The default input from your capture device is in RGB color space. This is the color space we see the world in, with our eyes. Though there are methods to detect skin (and thereby hand) from this color space, they may not be as effective as the others. So we change the color space of the image to the <a href="https://en.wikipedia.org/wiki/YCbCr">Y-Cr-Cb</a> color space. The transformation can be done with literally one line of code:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">imgYCC</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2YCR_CB</span><span class="p">)</span>
+</code></pre></div>
+<p>Now that we have the image in the required format, we need to find a way to identify what range of the  Y-Cr-Cb values gives us the clearest view of the skin. Once we have skin, we can figure out the hand.
+There are again many options for finding the sweet spot. I&#39;d recommend you do some reading/innovating of your own and find a range that best suits you. For help, you may consider reading through research papers such as <a href="http://arxiv.org/pdf/1212.0134.pdf">this</a>, <a href="http://people.sabanciuniv.edu/mcetin/publications/malima_SIU06.pdf">this</a> and <a href="https://www.google.co.in/webhp?hl=en#hl=en-IN&amp;q=elliptical+boundary+model+skin+color+detection">this</a>. There are plenty more so you can dig as deep as you want.</p>
+
+<p>I experimented both manually (by setting up trackbars and manually setting values to optimal range) and by using the elliptical boundary model for skin color detection. While manual settings offer a better and finer control, it&#39;s a pain to adjust the values.</p>
+
+<p>So, by now you probably have effectively separated the hand component from the rest of the image. Your resulting image may look something like this:</p>
+
+<p><img src="/assets/images/post_images/SkinMask.jpg" alt="SkinMask.jpg"></p>
+
+<p>A little rough around the edges eh? To soften the rough edges, we can use this simple morphology snippet:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">## Used for erosion and dilation</span>
+<span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">size1</span><span class="p">,</span> <span class="n">size2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+<span class="c">## Erode then dilate to smoothen out the edges. Check their documentation for more details</span>
+<span class="n">frame2</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">erode</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">iterations</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">frame2</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">dilate</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">iterations</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c">## Use opening and closing morphological transformations to remove those annoying little dots</span>
+<span class="n">frame2</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_OPEN</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
+<span class="n">frame2</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_CLOSE</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
+</code></pre></div>
+<p>To smoothen it out more, we use <a href="https://en.wikipedia.org/wiki/Gaussian_blur">Gaussian Blur</a> and then <a href="http://docs.opencv.org/modules/imgproc/doc/miscellaneous_transformations.html">threshold</a> using the <a href="https://en.wikipedia.org/wiki/Otsu&#x27;s_method">Otsu algorithm</a> as shown:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">## Here, (x, y) is a tuple denoting the Gaussian kernel size, with Gaussian kernel standard deviation ## in X direction being 0, (for Y direction, it is 0 by default)</span>
+<span class="n">imgYCC</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">imgYCC</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c">## Set 0 and 255 to the desired minimum and maximum thresholds. (Psst.. experiment time)</span>
+<span class="n">ret</span><span class="p">,</span> <span class="n">imgYCC</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">imgYCC</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">THRESH_OTSU</span><span class="p">)</span>
+</code></pre></div>
+<p><em>yawnnn...</em> OK, so now we have a nice and smooth image to work on. Looking back at it all, it doesn&#39;t look like we have a long way, but believe me, getting here the way we did is big task. Extracting the hand out of an RGB (or BGR, as it used in OpenCV) image is half the job (well, a little less than half, but you get the point). In the next post, we&#39;ll discuss a little more about hand exatraction, specifically blob analysis. Then we&#39;ll continue on to detecting the hand, and experiment with algorithms to accurately detect parts of the hand.</p>
+
+<p>And this is the point where I am looking at you, no expression, a blank poker face, hoping you&#39;ll get the signal, say thanks and bid farewell.. No, I don&#39;t mean you to go, it&#39;s just.. I&#39;m tired and there&#39;s a lot more I&#39;d like to talk about in more detail, but some other time. (Very soon, I promise). So, there you go. You can go on and experiment, research, play/mess with that code.
+And if you like, you can even check out our project <a href="http://github.com/TigerKid001/Dex">Dex</a>, as we call it. Help will be much appreciated ;)</p>
+
+<p>As a great wizard once said,</p>
+
+<blockquote>
+<p>Fly, you fools!</p>
+</blockquote>
+
+<p>Happy coding :)
+<br /><br /></p>
+
+<hr>
+
+<p><strong><sup id="minor-one">1</sup></strong>
+The first Minor project idea was that of an automated bot that would crack Google&#39;s new NoCaptcha reCaptcha system by imitating organic mouse movements and selecting the correct images for the given keyword. Sadly, it was dropped because of time constraints.</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            <figure class="author-image">
+                <a class="img" href="/author/tk" style="background-image: url(/assets/images/tk-logo-128.png)"><span class="hidden">'s Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/tk">Sidhant Sharma</a></h4>
+
+                
+                    <p> Developer. Student. Gamer. Reader. Learner.</p>
+                
+                <div class="author-meta">
+    <span class="author-link">
+        <a href="https://www.facebook.com/sidhant.sharma.012" class="iconlink-lg"> <i class="social-fb fa fa-facebook-official"></i> </a>
+        <a href="https://www.twitter.com/TigerKid001" class="social-tw iconlink-lg"> <i class="fa fa-twitter"></i> </a>
+        <a href="https://plus.google.com/103325962048453263615/about" class="social-gp iconlink-lg"> <i class="fa fa-google-plus"></i> </a>
+        <a href="https://in.linkedin.com/in/sidhantsharma12" class="social-li iconlink-lg"> <i class="fa fa-linkedin-square"></i> </a>
+        <a href="https://github.com/tigerkid001" class="social-gh iconlink-lg"> <i class="fa fa-github"></i> </a>
+        <a href="mailto:dev@sidhant.io?subject=Hi%20tk!" class="social-email iconlink-lg"> <i class="fa fa-envelope-o"></i> </a>
+    </span>
+</div>
+
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="social-tw" href="http://twitter.com/share?text=The OpenCV Saga&amp;url=http://sidhant.io/the-opencv-saga"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="fa fa-twitter fa-lg"></i>
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="social-fb" href="https://www.facebook.com/sharer/sharer.php?u=http://sidhant.io/the-opencv-saga"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="fa fa-facebook-official fa-lg"></i>
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="social-gp" href="https://plus.google.com/share?url=http://sidhant.io/the-opencv-saga"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="fa fa-google-plus fa-lg"></i>
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            <!-- Add Disqus Comments -->
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev" style="background-image: url(/assets/images/post_covers/blink_cover.jpg)" href="/bling-blink-blink">
+            <section class="post">
+                <h2>Bling Bling Blink</h2>
+                <p>Hey, do you use Google Chrome most of the time? All the time? Good for...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story" style="background-image: url(/assets/images/post_covers/git_cover.jpg)" href="/gitting-started">
+            <section class="post">
+                <h2>'Gitting' started</h2>
+                <p>Recently, I got a chance to be a part of one of the most kick-ass...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/author/tk">Sidhant Sharma</a> &copy; 2016</section>
+          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-74123332-1', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+
+</body>
+</html>
