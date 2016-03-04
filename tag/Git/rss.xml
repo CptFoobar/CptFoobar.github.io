@@ -18,167 +18,228 @@
 	  <pubDate>2016-03-01T00:00:00+05:30</pubDate>
 	  <guid>sidhant.io/gitting-started</guid>
 	  <description><![CDATA[
-	     <p>Recently, I got a chance to be a part of one of the most kick-ass communities, whose software basically rules
-the tech world. Yeah, Git. The aim was to get my hands dirty with something new and amazing.
-So though this post isn&#39;t as much about my experience there (so far, great), but rather a stash of useful commands that one may require when actually contributing to Git. I&#39;ll keep it updated as often as possible. Though the documentation for getting involved is very educative and covers everything you&#39;re required to do, I decided to write this post since I couldn&#39;t find a complete set of commands (and concepts) we need to actually get started. Man pages are nice, but nothing beats a well written tutorial, right?</p>
+	     <p>Recently, I got a chance to be a part of one of the most kick-ass communities, whose software basically rules<br />
+the tech world. Yeah, Git. The aim was to get my hands dirty with something new and amazing.<br />
+So though this post isn’t as much about my experience there (so far, great), but rather a stash of useful commands that one may require when actually contributing to Git. I’ll keep it updated as often as possible. Though the documentation for getting involved is very educative and covers everything you’re required to do, I decided to write this post since I couldn’t find a complete set of commands (and concepts) we need to actually get started. Man pages are nice, but nothing beats a well written tutorial, right?</p>
 
-<p><strong>TL;DR</strong>: Google it, click the first StackOverflow link, copy-paste the command in the top answer and hit enter. That&#39;ll [make/fix/do] it.</p>
+<p><strong>TL;DR</strong>: Google it, click the first StackOverflow link, copy-paste the command in the top answer and hit enter. That’ll [make/fix/do] it.</p>
 
-<p>So, here&#39;s how we&#39;re gonna do. First, we&#39;ll walk through the basics of Git in case you want a refresher. Then we move on to the stuff we&#39;ll need very frequently for development. Let&#39;s get started.</p>
+<p>So, here’s how we’re gonna do. First, we’ll walk through the basics of Git in case you want a refresher. Then we move on to the stuff we’ll need very frequently for development. Let’s get started.</p>
 
-<h4>Getting started with Git</h4>
+<h4 id="getting-started-with-git">Getting started with Git</h4>
 
-<p>First, if you&#39;re not familiar with what Git is and what it&#39;s for, go read <a href="https://www.atlassian.com/git/tutorials/setting-up-a-repository">this</a> Atlassian tutorial to get an idea what we&#39;re dealing with here. Ideally, you should know some basic Git commands before can get started with contributing. Here&#39;s a summary of the important commands and concepts you should have an idea of. For everything else, <strong>RTFM</strong>, or... StackOverflow. If you think you know the basics pretty well, or have read through the Atlassian docs, go ahead skip to the <a href="#the-good-stuff">contributing section</a>:</p>
+<p>First, if you’re not familiar with what Git is and what it’s for, go read <a href="https://www.atlassian.com/git/tutorials/setting-up-a-repository">this</a> Atlassian tutorial to get an idea what we’re dealing with here. Ideally, you should know some basic Git commands before can get started with contributing. Here’s a summary of the important commands and concepts you should have an idea of. For everything else, <strong>RTFM</strong>, or… StackOverflow. If you think you know the basics pretty well, or have read through the Atlassian docs, go ahead skip to the <a href="#the-good-stuff">contributing section</a>:</p>
 
 <p><strong>1. Creating new repo, adding and committing</strong></p>
 
-<p>The first thing you need to do to get started is, no surprise, install Git. If you haven&#39;t installed on your system yet, get it from <a href="http://git-scm.com/downloads/">git-scm downloads</a>.</p>
+<p>The first thing you need to do to get started is, no surprise, install Git. If you haven’t installed on your system yet, get it from <a href="http://git-scm.com/downloads/">git-scm downloads</a>.</p>
 
-<p>Now, like a fine English gentlemen, let&#39;s introduce ourselves to the newly installed software, starting with name and email.
+<p>Now, like a fine English gentlemen, let’s introduce ourselves to the newly installed software, starting with name and email.<br />
 This is done as:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git config --global user.name <span class="s2">&quot;User Name [:nick]&quot;</span>
-</code></pre></div>
-<p>So, if you are John Travolta, with nickname jtrav, you&#39;ll do:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git config --global user.name <span class="s2">&quot;John Travolta [:jtrav]&quot;</span>
-</code></pre></div>
-<p>You may vary the name string, like remove the colon before the nick, or the nick altogether. I put it there because 1. I like it there, and 2. it tells others your nick in case they wanna reach out on an irc or otherwise. But it&#39;s completely up to you.</p>
 
-<p>Your email-id is as important as your name, especially for the Git community, so here&#39;s what we do:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git config --global user.email <span class="s2">&quot;&lt;my.email@example.com&gt;&quot;</span>
-</code></pre></div>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git config --global user.name <span class="s2">"User Name [:nick]"</span>
+</code></pre>
+</div>
+
+<p>So, if you are John Travolta, with nickname jtrav, you’ll do:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git config --global user.name <span class="s2">"John Travolta [:jtrav]"</span>
+</code></pre>
+</div>
+
+<p>You may vary the name string, like remove the colon before the nick, or the nick altogether. I put it there because 1. I like it there, and 2. it tells others your nick in case they wanna reach out on an irc or otherwise. But it’s completely up to you.</p>
+
+<p>Your email-id is as important as your name, especially for the Git community, so here’s what we do:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git config --global user.email <span class="s2">"&lt;my.email@example.com&gt;"</span>
+</code></pre>
+</div>
+
 <p>This should be same email ID you would be using for contributing to Git.</p>
 
-<h5>PRO TIP:</h5>
+<h5 id="pro-tip">PRO TIP:</h5>
+<p>If you want to keep this ID separate from your usual id, you can skip the <code class="highlighter-rouge">--global</code> tag and configure the identity details separately for different projects.</p>
 
-<p>If you want to keep this ID separate from your usual id, you can skip the <code>--global</code> tag and configure the identity details separately for different projects.</p>
-
-<p>Great, now you&#39;re all set to get started.</p>
+<p>Great, now you’re all set to get started.</p>
 
 <p><strong>2. The basics</strong></p>
 
 <p>Now, we need a sample repository to get started with. You can make any regular directory (folder) a git-managed repository by running this simple command.</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git init          <span class="c"># Tell git to initialize this directory as repository</span>
-</code></pre></div>
-<p>For those who like details, this creates a tiny hidden directory by the name <code>.git</code> in the current directory (which is now, by the way, a repository) that stores a lot of information the current and past states of this repository from this point on.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git init          <span class="c"># Tell git to initialize this directory as repository</span>
+</code></pre>
+</div>
+
+<p>For those who like details, this creates a tiny hidden directory by the name <code class="highlighter-rouge">.git</code> in the current directory (which is now, by the way, a repository) that stores a lot of information the current and past states of this repository from this point on.</p>
 
 <p>Now when you run</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git status
-</code></pre></div>
-<p>it&#39;ll list all the files in the repository in red. This basically means that all the files are although in the directory, but git
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git status
+</code></pre>
+</div>
+
+<p>it’ll list all the files in the repository in red. This basically means that all the files are although in the directory, but git<br />
 is not tracking them yet. So, we simply tell to do so, by</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git add .
-</code></pre></div>
-<p>The <code>.</code> tells git to add all files for tracking (more precisely, the staging area). You can add selected files by specifying the path. Now, we commit the changes to make them solid by committing them:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git commit -m <span class="s2">&quot;A commit message&quot;</span>
-</code></pre></div>
-<p>The <code>-m</code> let&#39;s you add an inline-comment. If you don&#39;t use that option, your default editor will be opened for you to enter
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git add .
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">.</code> tells git to add all files for tracking (more precisely, the staging area). You can add selected files by specifying the path. Now, we commit the changes to make them solid by committing them:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git commit -m <span class="s2">"A commit message"</span>
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">-m</code> let’s you add an inline-comment. If you don’t use that option, your default editor will be opened for you to enter<br />
 your commit message in. We try to keep commit messages short descriptive of the changes made in the commit.</p>
 
-<p>Now, we are ready to &#39;push&#39; the changes to a remote, i.e., upload them to your server. If you&#39;re using Github or Bitbucket, it&#39;ll be you&#39;re repository&#39;s link (You can figure it out, it&#39;s no big deal). To add a new remote, we use:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git remote add origin &lt;link-to-remote&gt;
-</code></pre></div>
+<p>Now, we are ready to ‘push’ the changes to a remote, i.e., upload them to your server. If you’re using Github or Bitbucket, it’ll be you’re repository’s link (You can figure it out, it’s no big deal). To add a new remote, we use:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git remote add origin &lt;link-to-remote&gt;
+</code></pre>
+</div>
+
 <p>We push local changes to remote using:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git push origin master
-</code></pre></div>
-<p>Note that here, <code>origin</code> is the name of the remote, as we added in the second-last command, and <code>master</code> is the branch
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git push origin master
+</code></pre>
+</div>
+
+<p>Note that here, <code class="highlighter-rouge">origin</code> is the name of the remote, as we added in the second-last command, and <code class="highlighter-rouge">master</code> is the branch<br />
 where you are pushing the changes.</p>
 
 <p>If you want to clone a repository hosted somewhere, you can do so by simply using:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git clone &lt;link-to-repository&gt;
-</code></pre></div>
-<p>To learn more about branching, refer to Atlassian documentation of [branching]. Same goes for other useful commands like
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git clone &lt;link-to-repository&gt;
+</code></pre>
+</div>
+
+<p>To learn more about branching, refer to Atlassian documentation of [branching]. Same goes for other useful commands like<br />
 <a href="https://www.atlassian.com/git/tutorials/using-branches/git-branch">branch</a>, <a href="https://www.atlassian.com/git/tutorials/using-branches/git-merge">merge</a>, <a href="https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase">rebase</a>, <a href="https://www.atlassian.com/git/tutorials/using-branches/git-checkout">checkout</a> and <a href="https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting/commit-level-operations">reset</a>.</p>
 
-<p>Getting into more detailed description of these commands, and some other you may occasionally need will eventually turn this blog into another version of Git man pages, so we&#39;ll finish the overview here and get started with some dev.</p>
+<p>Getting into more detailed description of these commands, and some other you may occasionally need will eventually turn this blog into another version of Git man pages, so we’ll finish the overview here and get started with some dev.</p>
 
-<p><br />
+<p><br /><br />
 <span id="the-good-stuff"></span></p>
 
-<h4>Contributing to Git</h4>
+<h4 id="contributing-to-git">Contributing to Git</h4>
 
-<p>The first step you <em>must</em> read the man pages. I can&#39;t emphasize enough, <strong><em>RTFM</em></strong>. Having cloned the Git repo from their <a href="https://github.com/git/git">Github repository</a>, you should definitely read the <a href="https://github.com/git/git/blob/master/README.md">README</a>, the <a href="https://github.com/git/git/blob/master/Documentation/CodingGuidelines">CodingGuidelines</a> and the <a href="https://github.com/git/git/blob/master/Documentation/SubmittingPatches">SubmittingPatches</a> docs. They&#39;ll tell you everything you must know.</p>
+<p>The first step you <em>must</em> read the man pages. I can’t emphasize enough, <strong><em>RTFM</em></strong>. Having cloned the Git repo from their <a href="https://github.com/git/git">Github repository</a>, you should definitely read the <a href="https://github.com/git/git/blob/master/README.md">README</a>, the <a href="https://github.com/git/git/blob/master/Documentation/CodingGuidelines">CodingGuidelines</a> and the <a href="https://github.com/git/git/blob/master/Documentation/SubmittingPatches">SubmittingPatches</a> docs. They’ll tell you everything you must know.</p>
 
-<p>Also, it is suggested that you should fork Git&#39;s Github repo and set up hooks for <a href="https://travis-ci.org/">Travis-CI</a>. So, before finally making a patch, you can check that your patch doesn&#39;t break the build for OS X or Linux. It&#39;s fairly easy to use and a free Travis account would serve you well, for both Git development and otherwise.
+<p>Also, it is suggested that you should fork Git’s Github repo and set up hooks for <a href="https://travis-ci.org/">Travis-CI</a>. So, before finally making a patch, you can check that your patch doesn’t break the build for OS X or Linux. It’s fairly easy to use and a free Travis account would serve you well, for both Git development and otherwise.<br />
 Now, as promised, the commands. Here we go.</p>
 
-<p>The first thing we need quite often is <code>diff</code> and <code>format-patch</code>. <code>diff</code> is used, as you probably guessed, to diff between two commits, current HEAD and some commit, a single file&#39;s diff over a two commits and more; basically, anything you may need to compare with anything else. Particularly, these get handy:</p>
+<p>The first thing we need quite often is <code class="highlighter-rouge">diff</code> and <code class="highlighter-rouge">format-patch</code>. <code class="highlighter-rouge">diff</code> is used, as you probably guessed, to diff between two commits, current HEAD and some commit, a single file’s diff over a two commits and more; basically, anything you may need to compare with anything else. Particularly, these get handy:</p>
 
 <p><em>1. Diff between unstaged/uncommited changes and last commit:</em></p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git diff -- <span class="o">[</span>&lt;path-to-file&gt;<span class="o">]</span>
-</code></pre></div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git diff -- <span class="o">[</span>&lt;path-to-file&gt;]
+</code></pre>
+</div>
+
 <p>Square brackets indicate optional parameter. You can specify a single file or directory to diff. By default, all changes are diffed against last commit. To diff the current HEAD with any commit, we use:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git diff commit_id HEAD
-</code></pre></div>
-<p>where commit_id is the sha1 ID of the commit you want to diff HEAD with.
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git diff commit_id HEAD
+</code></pre>
+</div>
+
+<p>where commit_id is the sha1 ID of the commit you want to diff HEAD with.<br />
 To diff the current HEAD and the last commit (last HEAD), simply use:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git diff HEAD^ HEAD
-</code></pre></div>
-<p>You can also <code>diff</code> to generate patches, example this creates a patch for the last commit:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git diff HEAD^ HEAD &gt; last_commit.patch
-</code></pre></div>
-<p>Another cool thing you can do with diff is check if you introduced extraneous whitespace while making changes.
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git diff HEAD^ HEAD
+</code></pre>
+</div>
+
+<p>You can also <code class="highlighter-rouge">diff</code> to generate patches, example this creates a patch for the last commit:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git diff HEAD^ HEAD &gt; last_commit.patch
+</code></pre>
+</div>
+
+<p>Another cool thing you can do with diff is check if you introduced extraneous whitespace while making changes.<br />
 To do that, just execute:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git diff --check <span class="o">[</span>commit_1 commit_2<span class="o">]</span>
-</code></pre></div>
-<p><em>2. Formatting patches using <code>format-patch</code></em></p>
 
-<p>If you&#39;re going to send patches to git, you need to properly format them so they are readable
-for all community members, and also adhere to the git standards. For this, an awesome command comes
-with git, called <code>format-patch</code>. This allows you to make an email-ready formatted patch that you can send directly using
-<code>send-email</code> or using another MUA client. More on MUA clients later.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git diff --check <span class="o">[</span>commit_1 commit_2]
+</code></pre>
+</div>
 
-<p>A basic usage of <code>format-patch</code> is this:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git format-patch master -1
-</code></pre></div>
+<p><em>2. Formatting patches using <code class="highlighter-rouge">format-patch</code></em></p>
+
+<p>If you’re going to send patches to git, you need to properly format them so they are readable<br />
+for all community members, and also adhere to the git standards. For this, an awesome command comes<br />
+with git, called <code class="highlighter-rouge">format-patch</code>. This allows you to make an email-ready formatted patch that you can send directly using<br />
+<code class="highlighter-rouge">send-email</code> or using another MUA client. More on MUA clients later.</p>
+
+<p>A basic usage of <code class="highlighter-rouge">format-patch</code> is this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git format-patch master -1
+</code></pre>
+</div>
+
 <p>This creates a patch of the last 1 commit on master branch. You can do a lot more than just that make a simple patch for last commit. You can make patches for multiple commits as well. One standard form I use a lot is:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git format-patch -1 -o ../patches/receive-pack-parse-option-api/ --signoff --in-reply-to<span class="o">=</span><span class="s1">&#39;&lt;message-id&gt;&#39;</span> --patience <span class="o">[</span>-vN<span class="o">]</span>
-</code></pre></div>
-<p>Dissection of the above is as follows, <code>-1</code> tells git to make patch for last 1 commit. You may use -1commit id, commits relative to HEAD (Like HEAD~5), or a combination of commit ID and number of commits following it. <code>-o &lt;dir&gt;</code> tell git which directly to put the generated patch in. <code>--patience</code> tells it to use Patience algorithm (occasionally, patches are not very readable to others when using the default algorithm, so trying another algorithm helps). <code>--in-reply-to=&lt;message-id&gt;</code> adds an extra line to the patch head, indicating which email is this patch in reply to. It&#39;s usually used for replying to previous versions of your patch. You specify version number of your patch using <code>-vN</code> where N is the version number (integer, eg -v3). This makes your patch subject look like &quot;[PATCH v3] the commit message&quot;.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git format-patch -1 -o ../patches/receive-pack-parse-option-api/ --signoff --in-reply-to<span class="o">=</span><span class="s1">'&lt;message-id&gt;'</span> --patience <span class="o">[</span>-vN]
+</code></pre>
+</div>
+
+<p>Dissection of the above is as follows, <code class="highlighter-rouge">-1</code> tells git to make patch for last 1 commit. You may use -1commit id, commits relative to HEAD (Like HEAD~5), or a combination of commit ID and number of commits following it. <code class="highlighter-rouge">-o &lt;dir&gt;</code> tell git which directly to put the generated patch in. <code class="highlighter-rouge">--patience</code> tells it to use Patience algorithm (occasionally, patches are not very readable to others when using the default algorithm, so trying another algorithm helps). <code class="highlighter-rouge">--in-reply-to=&lt;message-id&gt;</code> adds an extra line to the patch head, indicating which email is this patch in reply to. It’s usually used for replying to previous versions of your patch. You specify version number of your patch using <code class="highlighter-rouge">-vN</code> where N is the version number (integer, eg -v3). This makes your patch subject look like “[PATCH v3] the commit message”.</p>
 
 <p><em>3. Undo commits</em></p>
 
 <p>If often happens, that you get the patch right in the first try. In such a case, if you have committed the changes already, you want to un-commit them. For that, just do</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git reset HEAD~n
-</code></pre></div>
-<p>replacing &#39;n&#39; with required number of commits to be undone.
-This doesn&#39;t delete the changes as a hard reset would, but simply uncommits them, and places them outside the staging area. This gets in handy when you need to make only slight modifications and commit again.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git reset HEAD~n
+</code></pre>
+</div>
+<p>replacing ‘n’ with required number of commits to be undone.<br />
+This doesn’t delete the changes as a hard reset would, but simply uncommits them, and places them outside the staging area. This gets in handy when you need to make only slight modifications and commit again.</p>
 
 <p><em>4. Squashing commits</em></p>
 
-<p>So you made 4 commits, but realize that they should ideally belong to one. What do you do? Undo them with <code>reset</code> and commit again? What if there are conflicts? Fret not, <code>rebase</code> is to the rescue. So, we simply run</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git rebase -i &lt;after-this-commit&gt;
-</code></pre></div>
-<p>replacing <after-this-commit> with a commit ID, or something like HEAD~4. In the screen that follows, replace &#39;pick&#39; on the second and subsequent commits with &#39;squash&#39; or &#39;fixup&#39;, as described in <a href="http://git-scm.com/docs/git-rebase#_interactive_mode">the manual</a>.</p>
+<p>So you made 4 commits, but realize that they should ideally belong to one. What do you do? Undo them with <code class="highlighter-rouge">reset</code> and commit again? What if there are conflicts? Fret not, <code class="highlighter-rouge">rebase</code> is to the rescue. So, we simply run</p>
 
-<p>But what if you accidentally pushed it to your forked repository? That rebase will work for local, but the remote won&#39;t accept it and you&#39;re pretty much back to square one, right? Not quite. Luckily, we can force a push, thus overwriting history of the remote [<em>CAUTION: There are serious implications of remote history rewrite. Try that you never have to use the following command.</em>]. For this, after squashing the commits locally, we push with slight change in syntax as:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git push gitfork +master
-</code></pre></div>
-<p>where gitfork is the name of your forked repo. The <code>+</code> tells git to force push only the specified branch, unlike --force, which would force-push all refs.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git rebase -i &lt;after-this-commit&gt;
+</code></pre>
+</div>
+<p>replacing <after-this-commit> with a commit ID, or something like HEAD~4. In the screen that follows, replace 'pick' on the second and subsequent commits with 'squash' or 'fixup', as described in [the manual](http://git-scm.com/docs/git-rebase#_interactive_mode).</after-this-commit></p>
 
-<p>Again, this isn&#39;t a very good thing to do, so try not to push changes that you aren&#39;t 1000% sure of.</p>
+<p>But what if you accidentally pushed it to your forked repository? That rebase will work for local, but the remote won’t accept it and you’re pretty much back to square one, right? Not quite. Luckily, we can force a push, thus overwriting history of the remote [<em>CAUTION: There are serious implications of remote history rewrite. Try that you never have to use the following command.</em>]. For this, after squashing the commits locally, we push with slight change in syntax as:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git push gitfork +master
+</code></pre>
+</div>
+<p>where gitfork is the name of your forked repo. The <code class="highlighter-rouge">+</code> tells git to force push only the specified branch, unlike –force, which would force-push all refs.</p>
+
+<p>Again, this isn’t a very good thing to do, so try not to push changes that you aren’t 1000% sure of.</p>
 
 <p><em>5. Sending mail with git</em></p>
 
-<p>Once you&#39;ve prepared a patch and are ready to send it to the mailing list, you well, send it. But how? Your regular email client (GMail, Google Inbox, Outlook) won&#39;t be of much help. That is because most likely, your client uses HTML formatted emails and also supports word-wrapping, and sometime adds extraneous whitespace, which can make patches not apply cleanly. To avoid this, you can either learn to use <code>git send-email</code> or configure your MUA client for sending correctly formatted patches. I prefer sending patches using send-email, and use Thunderbird for regular emails (though you can configure Thunderbird to format patches) <sup><a href="#note-1">1</a></sup>. First, let&#39;s see the good ol&#39; command line method. Before we can use it, we need to install git send-email. On Linux, you can do something like</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sudo apt-get install git-email
-</code></pre></div>
-<p>For other platforms, you may wanna Google it.
-Next, we need to configure the email. <a href="http://blog.bisect.de/2012/01/how-to-send-patches-via-git-send-email.html">This</a> blogpost covers it well. I&#39;d only like to add this little thing, if you are going to use a GMail account, you may need to take one extra set to get everything working. You would be needed to go your account settings, and from there enable &#39;Access for Less Secure Apps&#39;. That&#39;s it, you&#39;re all set.</p>
+<p>Once you’ve prepared a patch and are ready to send it to the mailing list, you well, send it. But how? Your regular email client (GMail, Google Inbox, Outlook) won’t be of much help. That is because most likely, your client uses HTML formatted emails and also supports word-wrapping, and sometime adds extraneous whitespace, which can make patches not apply cleanly. To avoid this, you can either learn to use <code class="highlighter-rouge">git send-email</code> or configure your MUA client for sending correctly formatted patches. I prefer sending patches using send-email, and use Thunderbird for regular emails (though you can configure Thunderbird to format patches) <sup><a href="#note-1">1</a></sup>. First, let’s see the good ol’ command line method. Before we can use it, we need to install git send-email. On Linux, you can do something like</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install git-email
+</code></pre>
+</div>
+<p>For other platforms, you may wanna Google it.<br />
+Next, we need to configure the email. <a href="http://blog.bisect.de/2012/01/how-to-send-patches-via-git-send-email.html">This</a> blogpost covers it well. I’d only like to add this little thing, if you are going to use a GMail account, you may need to take one extra set to get everything working. You would be needed to go your account settings, and from there enable ‘Access for Less Secure Apps’. That’s it, you’re all set.</p>
 
 <p>Now, to actually send an email, write:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git send-email ../patches/patch1.patch --to<span class="o">=</span><span class="s1">&#39;git@vger.kernel.org&#39;</span> <span class="o">[</span>--in-reply-to<span class="o">=</span><span class="s1">&#39;&lt;message-id&gt;&#39;</span><span class="o">]</span> <span class="o">[</span>--cc<span class="o">=</span><span class="s1">&#39;someone@example.com&#39;</span><span class="o">]</span>
-</code></pre></div>
-<p>Dissection of the command; <code>../patches/patch1.patch</code> is the patch you want to send. <code>--to</code> argument is the person (in this case, mailing list) you want to send the message to. <code>--in-reply-to</code> comes in handy when: 1. you&#39;re sending multiple patches, in which case you send the consequent patches in reply to the first patch; 2. when you&#39;re sending alternate/updated versions of a patch, which you do again, at the root of the email thread. <code>--cc</code> allows you to CC people, and you can specify this options multiple times with different argument each time. Other options are quite self-descriptive and the git docs are very well written ;)</p>
 
-<p>That&#39;s it for now. I&#39;ll keep updating this post as find and learn more useful commands like the ones above. If you get stuck at anything, and git man pages don&#39;t help, try Googling it. It&#39;s ok, no one gets it right the first time. Usually, the top answer in the first StackOverflow link does the job.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git send-email ../patches/patch1.patch --to<span class="o">=</span><span class="s1">'git@vger.kernel.org'</span> <span class="o">[</span>--in-reply-to<span class="o">=</span><span class="s1">'&lt;message-id&gt;'</span><span class="o">]</span> <span class="o">[</span>--cc<span class="o">=</span><span class="s1">'someone@example.com'</span><span class="o">]</span>
+</code></pre>
+</div>
 
-<p><sup id="note-1">1</sup> For more details on setting up MUA for sending patches, refer to <a href="https://git-scm.com/docs/git-format-patch">format-patch documentation</a>, under the heading &#39;MUA Specific Hints&#39;.</p>
+<p>Dissection of the command; <code class="highlighter-rouge">../patches/patch1.patch</code> is the patch you want to send. <code class="highlighter-rouge">--to</code> argument is the person (in this case, mailing list) you want to send the message to. <code class="highlighter-rouge">--in-reply-to</code> comes in handy when: 1. you’re sending multiple patches, in which case you send the consequent patches in reply to the first patch; 2. when you’re sending alternate/updated versions of a patch, which you do again, at the root of the email thread. <code class="highlighter-rouge">--cc</code> allows you to CC people, and you can specify this options multiple times with different argument each time. Other options are quite self-descriptive and the git docs are very well written ;)</p>
+
+<p>That’s it for now. I’ll keep updating this post as find and learn more useful commands like the ones above. If you get stuck at anything, and git man pages don’t help, try Googling it. It’s ok, no one gets it right the first time. Usually, the top answer in the first StackOverflow link does the job.</p>
+
+<p><sup id="note-1">1</sup> For more details on setting up MUA for sending patches, refer to <a href="https://git-scm.com/docs/git-format-patch">format-patch documentation</a>, under the heading ‘MUA Specific Hints’.</p>
 
 <p><br /></p>
 
-<p>Sorry for the long post, here&#39;s a cute potato</p>
+<p>Sorry for the long post, here’s a cute potato</p>
 
-<p><img src="/assets/images/post_images/cute_potato.png" alt="Cute Potato"></p>
+<p><img src="/assets/images/post_images/cute_potato.png" alt="Cute Potato" /></p>
 
 	  ]]></description>
 	</item>
