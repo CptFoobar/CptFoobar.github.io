@@ -12,6 +12,93 @@
    <atom:link href="rss" rel="self" type="application/rss+xml" />
    
 	<item>
+	  <title>Alfred appreciation post</title>
+	  <link>sidhant.io/alfred-appreciation-post</link>
+	  <author>Sidhant Sharma</author>
+	  <pubDate>2016-05-23T00:00:00+05:30</pubDate>
+	  <guid>sidhant.io/alfred-appreciation-post</guid>
+	  <description><![CDATA[
+	     <p>This post, as the name suggests, is more of an appreciation post. Today, I’m appreciating Alfred. Who’s Alfred, you ask? Well Alfred is my butler!</p>
+
+<p>Nah, not really. I don’t have a butler. But what I do have is nothing short of a butler when it comes to serving files on a network. <a href="https://github.com/tigerkid001/alfred">Alfred</a> is a simple, easy to use command line tool I made sometime ago to, well, share files on a network. ‘Why, oh why’ you ask, when there’s already a million local network sharing applications out there. Two reasons; one, I needed a light local-network file sharing utility that’s simple enough to get going without any configurations and yet good enough to serve multiple files and folders to a number of users. And second, I wanted hands-on with Python and this was a fairly easy task. Of course, I could just use Python’s default <a href="https://docs.python.org/2/library/simplehttpserver.html">SimpleHTTPServer</a>, but that plan goes straight out the window when you wanna share the files with like a dozen of your friends (taking turns to download isn’t a thing). Ergo, Alfred. Though it was never meant to be anything worth blogging about, I clung to it long enough to make it a useful daily use tool. Alfred can handle multiple connections at once, and over the time, evolved into a pretty nice utility that I practically use everyday. So here’s some stuff Alfred can do:</p>
+
+<p><strong>Serve directories (the basics)</strong></p>
+
+<p>Serve the any directory over the localhost. You can specify a path to the directory you want to served, or you can just skip it and the current one will be served. Default port is <code class="highlighter-rouge">8021</code>, but you override that from the command line.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>alfred serve    <span class="c"># Serve current directory</span>
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>alfred serve --path /path/to/directory/   <span class="c"># Serve directory at given path</span>
+</code></pre>
+</div>
+
+<p>Now you may be wondering why the additional <code class="highlighter-rouge">serve</code> argument. One word, aesthetics.</p>
+
+<p><strong>Serve single files</strong></p>
+
+<p>It often happens that I just want to serve a single file, and not the whole directory. This can be because either I don’t want you to see what’s in that directory (things better left in the dark <img class="emoji" title=":expressionless:" alt=":expressionless:" src="https://assets.github.com/images/icons/emoji/unicode/1f611.png" height="20" width="20" align="absmiddle" />) or I’m too polite to make you sift through my deeply nested folders or excessive number of files for what you need. So simply,</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>alfred serve --path /path/to/file     <span class="c"># Serve a file</span>
+</code></pre>
+</div>
+
+<p>Yup, the same syntax. Just make it a path to a file and Alfred will serve it individually.</p>
+
+<p><strong>Share links and text</strong></p>
+
+<p>Another cool thing I always find handy is sharing text snippets, code snippets or links. It’s too cumbersome to share such snippets on WhatsApp or Messenger. And Slack won’t work for people not in your team. So, here’s a quick command for it:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>alfred serve --text <span class="s1">'Lorem ipsum dolor set amit.'</span>
+</code></pre>
+</div>
+
+<p>There’s actually more than just this, so here’s a table of the parameters and what they do:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Arguments</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-h, –help</td>
+      <td>show this help message and exit</td>
+    </tr>
+    <tr>
+      <td>-p <em>PORT</em>, –port <em>PORT</em></td>
+      <td>specify port to host server on (default: 8021)</td>
+    </tr>
+    <tr>
+      <td>-c <em>COUNT_MAX</em>, –count-max <em>COUNT_MAX</em></td>
+      <td>maximum number of times directory can be served (default: 10000)</td>
+    </tr>
+    <tr>
+      <td>-f, –force-port</td>
+      <td>force the server to run on specified port (server won’t start if port unavailable)</td>
+    </tr>
+    <tr>
+      <td>-P <em>PATH</em>, –path <em>PATH</em></td>
+      <td>specify path (file or directory) to be served (overrides –directory)</td>
+    </tr>
+    <tr>
+      <td>-t <em>TEXT</em>, –text <em>TEXT</em></td>
+      <td>specify text to be served (enter text in quotes)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>And of couse, all the code is available on <a href="https://github.com/tigerkid001/alfred">Github</a> under MIT License (as usual). So feel free to hack as you will.</p>
+
+<p>Yeah, I know what you’re thinking right now. <em>‘Why on EARTH would someone make such a big deal of so little a thing.’</em> Overkill, I get it. But I guess I just keep adding stuff to it that I often need, and accidentally made it this unnecessarily powerful command ine utility that has really no reason to be so. Ah well, typical me. And guessing by the way I tend to overdo things, you can expect some more “features” added to Alfred (I don’t know them yet either, but let’s see <img class="emoji" title=":wink:" alt=":wink:" src="https://assets.github.com/images/icons/emoji/unicode/1f609.png" height="20" width="20" align="absmiddle" />)</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
 	  <title>'Gitting' started</title>
 	  <link>sidhant.io/gitting-started</link>
 	  <author>Sidhant Sharma</author>
@@ -394,10 +481,10 @@ The first Minor project idea was that of an automated bot that would crack Googl
 
 	<item>
 	  <title>Bling Bling Blink</title>
-	  <link>sidhant.io/bling-blink-blink</link>
+	  <link>sidhant.io/bling-bling-blink</link>
 	  <author>Sidhant Sharma</author>
 	  <pubDate>2015-09-15T00:00:00+05:30</pubDate>
-	  <guid>sidhant.io/bling-blink-blink</guid>
+	  <guid>sidhant.io/bling-bling-blink</guid>
 	  <description><![CDATA[
 	     <p>Hey, do you use Google Chrome most of the time? All the time? Good for you. ‘Cause I don’t. I like Firefox better. I have my own reasons (not getting into that here). But you know what, I’m jealous of you. No seriously, I am jealous of Chrome users. I mean, you have an extension for everything. Literally. Need something to dim the webpages at night? Bang! There’s an extension. Need a prettier new tab page? Boom! There you have it. And why do they have to be pretty? Why does every extension in Google Chrome have to be pretty and smooth and bursting with colors? What is it, Disneyland? If you’ve read my last blog post, you’d probably know what this is one is about. This post is about… (drum rolls) … another Firefox add-on. This time, it’s about <a href="https://addons.mozilla.org/en-US/firefox/addon/blink/">Blink</a>. A Firefox add-on I made to make the new tab page more interesting. Here’s how it started:</p>
 

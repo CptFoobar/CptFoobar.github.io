@@ -1149,7 +1149,7 @@ body:not(.post-template) .post-title {
 
 /* Keep images centered, and allow images wider than the main
    text column to break out. */
-.post-content img {
+.post-content img:not(.emoji) {
     display: block;
     max-width: 126%;
     height: auto;
@@ -1996,12 +1996,17 @@ body:not(.post-template) .post-title {
         margin-top: 0;
     }
 
-    .post-content img {
+    .post-content img:not(.emoji) {
         padding: 0;
         width: calc(100% + 32px); /* expand with to image + margins */
         min-width: 0;
         max-width: 112%; /* fallback when calc doesn't work */
     }
+
+    /*img.emoji {
+        display: inline;
+
+    }*/
 
     .post-meta {
         font-size: 1.3rem;

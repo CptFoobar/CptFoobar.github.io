@@ -8,7 +8,16 @@
     <title>Tale of a Tiger</title>
     <link>http://sidhant.io/</link>
     <description>Developer Chronicles</description>
-    <pubDate>Tue, 01 Mar 2016 00:00:00 +0530</pubDate>
+    <pubDate>Mon, 23 May 2016 00:00:00 +0530</pubDate>
+    <item>
+      <title>Alfred appreciation post</title>
+      <link>http://sidhant.io//alfred-appreciation-post</link>
+      <description>This post, as the name suggests, is more of an appreciation post. Today, I'm appreciating Alfred. Who's Alfred, you ask? Well Alfred is my butler!
+
+</description>
+      <pubDate>Mon, 23 May 2016 00:00:00 +0530</pubDate>
+      <dc:date>2016-05-23T00:00:00+05:30</dc:date>
+    </item>
     <item>
       <title>'Gitting' started</title>
       <link>http://sidhant.io//gitting-started</link>
@@ -31,7 +40,7 @@ So though this post isn't as much about my experience there (so far, great), but
     </item>
     <item>
       <title>Bling Bling Blink</title>
-      <link>http://sidhant.io//bling-blink-blink</link>
+      <link>http://sidhant.io//bling-bling-blink</link>
       <description>Hey, do you use Google Chrome most of the time? All the time? Good for you. 'Cause I don't. I like Firefox better. I have my own reasons (not getting into that here). But you know what, I'm jealous of you. No seriously, I am jealous of Chrome users. I mean, you have an extension for everything. Literally. Need something to dim the webpages at night? Bang! There's an extension. Need a prettier new tab page? Boom! There you have it. And why do they have to be pretty? Why does every extension in Google Chrome have to be pretty and smooth and bursting with colors? What is it, Disneyland? If you've read my last blog post, you'd probably know what this is one is about. This post is about... (drum rolls) ... another Firefox add-on. This time, it's about [Blink](https://addons.mozilla.org/en-US/firefox/addon/blink/). A Firefox add-on I made to make the new tab page more interesting. Here's how it started:
 
 </description>
@@ -47,6 +56,6 @@ So though this post isn't as much about my experience there (so far, great), but
       <pubDate>Mon, 29 Jun 2015 00:00:00 +0530</pubDate>
       <dc:date>2015-06-29T00:00:00+05:30</dc:date>
     </item>
-    <dc:date>2016-03-01T00:00:00+05:30</dc:date>
+    <dc:date>2016-05-23T00:00:00+05:30</dc:date>
   </channel>
 </rss>
