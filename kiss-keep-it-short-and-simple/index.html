@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    <title>KISS: Keep It Short and Simple</title>
+    <meta name="description" content="Tale of a Tiger - As above, so below. As within, so without." />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/favicon.ico" >
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css"
+          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+        <link rel="canonical" href="/" />
+    <meta name="referrer" content="origin" />
+    <link rel="next" href="/page2/" />
+
+    <meta property="og:site_name" content="Tale of a Tiger" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Tale of a Tiger" />
+    <meta property="og:description" content="Developer Chronicles" />
+    <meta property="og:url" content="/" />
+    <meta property="og:image" content="/assets/images/site-cover.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tale of a Tiger" />
+    <meta name="twitter:description" content="Developer Chronicles" />
+    <meta name="twitter:url" content="/" />
+    <meta name="twitter:image:src" content="/assets/images/site-cover.jpg" />
+
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Tale of a Tiger",
+    "url": "/",
+    "image": "/assets/images/site-cover.jpg",
+    "description": "Developer Chronicles"
+}
+    </script>
+
+    <meta name="generator" content="Jekyll 3.0.0" />
+    <link rel="alternate" type="application/rss+xml" title="Tale of a Tiger" href="/rss.xml" />
+
+
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-about " role="presentation"><a href="/stuff-i-do">Stuff I do</a></li>
+        <!-- <li class="nav-fables " role="presentation"><a href="/tag/fables">Fables</a></li>
+        <li class="nav-speeches " role="presentation"><a href="/tag/speeches">Speeches</a></li>
+        <li class="nav-fiction " role="presentation"><a href="/tag/fiction">Fiction</a></li> -->
+        <li class="nav-author " role="presentation"><a href="/author/tk">About Me</a></li>
+    </ul>
+    <!-- <a class="subscribe-button icon-feed" href="/rss.xml">Subscribe</a> -->
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/post_covers/kiss_cover.jpg) ">
+    <nav class="main-nav  overlay  clearfix">
+        <a class="blog-logo" href="/"><img src="/assets/images/tk-logo.png" alt="Blog Logo" /></a>
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">KISS: Keep It Short and Simple</h1>
+            <section class="post-meta">
+            <!-- <a href='/'>Sidhant Sharma</a> -->
+            <time class="post-date" datetime="2017-01-06">January 06, 2017</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                 | on
+                
+                    
+                       <a href='/tag/NLP'>NLP</a>,
+                    
+                
+                    
+                       <a href='/tag/Summarization'>Summarization</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <blockquote>
+  <p>We are moving from a world where computing power was scarce to a place where it now is almost limitless, and <strong>where the true scarce commodity is increasingly human attention</strong><br />
+– <a href="https://en.wikipedia.org/wiki/Satya_Nadella">Satya Nadella</a></p>
+</blockquote>
+
+<p>A painfully accurate quote by the CEO of one of the largest software companies out there, research has indeed discovered that the average human attention span has dropped from 12 seconds in 2000 to a mere 8.25 seconds in 2015 <sup><a href="https://advertising.microsoft.com/en/wwdocs/user/display/cl/researchreport/31966/en/microsoft-attention-spans-research-report.pdf">[1]</a></sup>. Yep, that’s 0.75 seconds lower than that of a goldfish.<br />
+Studies also show that the average reading speed for humans is roughly 240 WPM (Words per Minute) for the English language <sup><a href="http://iovs.arvojournals.org/article.aspx?articleid=2166061#90715174">[2]</a></sup>. Of course, the results vary for different languages, but it gives us an idea of the approximate WPM we can read. Multiply that by the average attention span and you’ll get the number of words a person would probably read before scrolling away from the text. That number comes out to be about 33. So, you’re very likely to have lost your reader’s attention by the 40<sup>th</sup> word or so; just like I have lost yours, right about now (or have I?).<br />
+In such a time where people are unlikely to read long texts, the KISS principle becomes our only hope to convey our message in 40 words or less. Enter, Automatic Text Summarization.</p>
+
+<p>In my final year of college, we are supposed to work on a project for 2 semesters, preferably trying to solve a real world problem. And what better a problem to solve than that of communicating with fellow humans quickly and effectively. We, a group of 4, decided to take up a project on Text Summarization, a subfield of Natural Language Processing.</p>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>A summary can defined as <em>“a text that is produced from one or more texts, that conveys important information in the original text(s), and that is no longer than half of the original text(s) and usually significantly less than that”</em>. Automatic text summarization is the process of extracting such a summary from given document(s).</p>
+
+<p>Summarization can be categorised broadly as either extractive or abstractive. Extractive summaries carry the information taken from the original keywords, phrases or sentences present in the original document. Abstractive summarization involves the creation of novel sentences that highlight main ideas of the original document. Although it is obvious that human generated summaries are typically abstractive, majority of the summarization research is on extractive summarization. It is important to note that extractive summarization systems give results better than abstractive summarization systems. This is primarily due the inherent problems in abstractive summarization, such as semantic representation, inference and natural language generation which are relatively harder compared to a data-driven approach such as sentence or keyword extraction. However, assignment and extraction of high quality keywords manually itself is an expensive and time-consuming task.<br />
+For our project, we took what can be called, a hybrid approach. We divided our project into two segments, the first where would find the best technique to extract keywords from a given text. In the second, we would use those keywords to create abstractive summaries (we intend to use neural networks for natural language generation). There are various algorithms for automatic keywords extraction that have been developed to save time and effort. We selected and compared performance of three popular keyword extraction techniques. The competing algorithms are <em>(drum rolls…)</em> <strong>TextRank</strong>, <strong>LexRank</strong> and <strong>LSA</strong> (Latent Semantic Analysis).  </p>
+
+<h4 id="textrank">TextRank</h4>
+<p>In their paper “TextRank: Bringing Order into Texts”, Rada Mihalcea and Paul Tarau <sup><a href="https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf">[3]</a></sup> introduced TextRank as the first graph-based automated text summarization algorithm. TextRank algorithm is a simple application of PageRank algorithm. I won’t be going into the details of PageRank, TextRank or the equations involved in the computations of keyword weights for the fear of boring you to death (read the paper if you’re curious, it’s really nice). However, I can show you an image that might help you in getting an idea of what TextRank does. The following image is a graph that was created from a text on diophantine equations and inequations (no idea what that is, but it works).</p>
+
+<p><img src="/assets/images/post_images/text_rank.png" alt="TextRank" style="width: 75%" /><br />
+The graph made above would then be subject to PageRank algorithm, which would eventually give us “numbers”, “inequations”, “linear”, “diophantine”, “upper”, “bounds”, “strict” as keywords. Neat!</p>
+
+<h4 id="lexrank">LexRank</h4>
+
+<p>LexRank is another graph-based algorithm for automated text summarization, introduced by Güneş Erkan and Dragomir R. Radev <sup><a href="http://www.jair.org/papers/paper1523.html">[4]</a></sup> A cluster of documents can be viewed as a network of sentences that are related to each other. Some sentences are more similar to each other while some others may share only a little information with the rest of the sentences. Like TextRank, LexRank too uses the PageRank algorithm for extracting top keywords. The key difference between the algorithms is the weighting function used for assigning weights to the edges of the graph. While TextRank simply assumes all weights to be unit weights and computes ranks like a typical PageRank execution, LexRank uses degrees of similarity between words and phrases and computes the centrality of the sentences to assign weights. Again, I wouldn’t delve in the details of the algorithm’s governing equations, as it would easily make this post thrice as long as it already is. You may read research paper by Erkan and Radev cited above if interested.</p>
+
+<h4 id="lsa">LSA</h4>
+
+<p>Another popular and effective extractive summarization approach developed was the use of Latent Semantic Analysis for generating text summaries. Latent semantic analysis (LSA) is a technique in natural language processing, in particular distributional semantics, of analyzing relationships between a set of documents and the terms they contain by producing a set of concepts related to the documents and terms. LSA assumes that words that are close in meaning will occur in similar pieces of text. LSA found its use in text summarization when Josef Steinberger and Karel Ježek <sup><a href="http://www.kiv.zcu.cz/~jstein/publikace/isim2004.pdf">[5]</a></sup> demonstrated its effectiveness in extracting summaries keywords from textual data. They introduced a generic summarization technique which uses the latent semantic analysis technique to identify semantically important sentences.</p>
+
+<h3 id="the-experiment">The Experiment</h3>
+
+<p>The first step for testing the effectiveness of these algorithms was selecting a dataset. The text should not be too specific about any particular genre of writing, nor be too generic to be summarized. After searching and comparing multiple datasets, we finalised the <a href="http://kavita-ganesan.com/opinosis-opinion-dataset">Opinosis Dataset</a> for use in our project. The dataset contains 51 review articles, each about 100 sentences long, obtained from Tripadvisor, Edmunds.com and Amazon.com. The second salient feature of the dataset is that it comes with a set of 4 to 5 hand written summaries of each of these articles, courtesy of the authors of the dataset <sup><a href="http://delivery.acm.org/10.1145/1880000/1873820/p340-ganesan.pdf?ip=122.161.24.15&amp;id=1873820&amp;acc=OPEN&amp;key=4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E6D218144511F3437&amp;CFID=713303441&amp;CFTOKEN=61375673&amp;__acm__=1483690699_8134883f16f7700da0b0ca25aef6b57e">[6]</a></sup>. These summaries provide a perfect standard for comparing the relative performance of other algorithms.<br />
+Without explaining all of the code, I’ll quicky run you through the setup, which looks like this:</p>
+
+<p><img src="/assets/images/post_images/ats_system_setup.png" alt="" /></p>
+
+<p>The text is first preprocessed to strip out <a href="https://en.wikipedia.org/wiki/Stop_words">stopwords</a> and stem the words (using Porter2 English Snowball Stemmer) for removing word derivatives. These steps are an important part of any natural language processing activity as they remove the unimportant words and allow the algorithm to focus on root words instead of different forms of the same word.<br />
+Having preprocessed the texts, we can now feed them to the algorithms implementations. The algorithms were implemented in Python using the <code class="highlighter-rouge">sumy</code> python library. Each of the algorithms then output a set of keywords which were stored for evaluation.</p>
+
+<h3 id="evaluation">Evaluation</h3>
+
+<p>To evaluate the performance of the algorithms, we need a set of ‘gold’ keywords to compare the extracted keywords against. Here we used the human generated summaries to extract most frequent keywords. Only the keywords that appeared in more than half of the summaries were selected as ‘gold’ keywords for that particular article. We also measured the running time of each of the algorithms on the dataset.</p>
+
+<p>The evaluation metric we used was ROUGE-N metric from the <a href="http://www.berouge.com/Pages/default.aspx">ROUGE toolkit</a>. Since we are considering only single-word keywords, N is set to unity. In essence, the ROUGE-1 parameters simply computes the ratio of number of keywords correctly indentified (i.e. keywords in sample that also occur in the gold set) to the total number of gold reference set keywords.</p>
+
+<h3 id="results">Results</h3>
+
+<p>The following image summarizes our results (summary of a summarization experiment, so meta…):<br />
+<img src="/assets/images/post_images/ats_results.png" alt="" /></p>
+
+<p>The blue horizontal line denotes the ROUGE-1 score of human generated summaries calculated by k-fold cross validatoin of each of the summa for every topic. As we can see, TextRank came out to be the winner. With a modest running time and a near-human ROUGE-1 score, TextRank was finally selected as our keyword extraction technique for the second phase of the project.</p>
+
+<p>The code is available on <a href="https://github.com/TigerKid001/text_summarization_major">Github</a>.</p>
+
+<p>That’s all for now folks. Expect another post on this subject once we’re done with second part too. We’ll try to make a research paper out of it, if our work is any good. Till then,  </p>
+
+<blockquote>
+  <p><em><img src="/assets/images/vulcan_salute.png" alt=":vulcan_salute:" style="height: 1.75em; margin: 0px; padding: 0;display: inline-block; position: inherit; transform: translateX(0);" />    Live Long and Prosper</em></p>
+</blockquote>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            <figure class="author-image">
+                <a class="img" href="/author/tk" style="background-image: url(/assets/images/tk-logo-128.png)"><span class="hidden">'s Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/tk">Sidhant Sharma</a></h4>
+
+                
+                    <p> Developer. Student. Gamer. Reader. Learner.</p>
+                
+                <div class="author-meta">
+    <span class="author-link">
+        <a href="https://www.facebook.com/sidhant.sharma.012" class="iconlink-lg"> <i class="social-fb fa fa-facebook-official"></i> </a>
+        <a href="https://www.twitter.com/TigerKid001" class="social-tw iconlink-lg"> <i class="fa fa-twitter"></i> </a>
+        <a href="https://plus.google.com/103325962048453263615/about" class="social-gp iconlink-lg"> <i class="fa fa-google-plus"></i> </a>
+        <a href="https://in.linkedin.com/in/sidhantsharma12" class="social-li iconlink-lg"> <i class="fa fa-linkedin-square"></i> </a>
+        <a href="https://github.com/tigerkid001" class="social-gh iconlink-lg"> <i class="fa fa-github"></i> </a>
+        <a href="mailto:dev@sidhant.io" class="social-email iconlink-lg"> <i class="fa fa-envelope-o"></i> </a>
+    </span>
+</div>
+
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="social-tw" href="http://twitter.com/share?text=KISS: Keep It Short and Simple&amp;url=http://sidhant.iokiss-keep-it-short-and-simple"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="fa fa-twitter fa-lg"></i>
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="social-fb" href="https://www.facebook.com/sharer/sharer.php?u=http://sidhant.iokiss-keep-it-short-and-simple"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="fa fa-facebook-official fa-lg"></i>
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="social-gp" href="https://plus.google.com/share?url=http://sidhant.iokiss-keep-it-short-and-simple"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="fa fa-google-plus fa-lg"></i>
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+            <!-- Add Disqus Comments -->
+            
+                <div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+
+    var disqus_config = function () {
+        this.page.url = 'http://sidhant.io/kiss-keep-it-short-and-simple';
+        this.page.identifier = 'sidhant.io/kiss-keep-it-short-and-simple';
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document,
+            s = d.createElement('script');
+
+        s.src = '//sidhant.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev" style="background-image: url(/assets/images/post_covers/alfred_appreciation.jpg)" href="/alfred-appreciation-post">
+            <section class="post">
+                <h2>Alfred appreciation post</h2>
+                <p>This post, as the name suggests, is more of an appreciation post. Today, I’m appreciating...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+    <!-- [[! next_post ]] -->
+    
+    <!-- [[! /next_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/author/tk">Sidhant Sharma</a> &copy; 2017</section>
+          <section class="licenses"><a href="/licenses">Licenses</a></section>
+          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="/assets/js/jquery-3.1.0.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+    <!-- Add Google Analytics  -->
+    
+    <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-74123332-1', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+
+
+</body>
+</html>

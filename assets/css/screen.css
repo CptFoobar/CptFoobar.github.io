@@ -1673,8 +1673,8 @@ body:not(.post-template) .post-title {
 
 .poweredby {
     display: block;
-    width: 45%;
     float: right;
+    width: 40%;
     text-align: right;
 }
 
@@ -1682,6 +1682,13 @@ body:not(.post-template) .post-title {
     display: block;
     width: 45%;
     float: left;
+}
+
+.licenses {
+    display: inline-block;
+    float: right;
+    text-align: right;
+    padding-left: 1em;
 }
 
 

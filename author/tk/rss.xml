@@ -5,12 +5,85 @@
    
       <title>sidhant.io</title>
    
-   <link>http://sidhant.io/</link>
+   <link>http://sidhant.io</link>
    <description>Developer Chronicles</description>
    <language>en-us</language>
    <managingEditor> Sidhant Sharma</managingEditor>
    <atom:link href="rss" rel="self" type="application/rss+xml" />
    
+	<item>
+	  <title>KISS: Keep It Short and Simple</title>
+	  <link>sidhant.io/kiss-keep-it-short-and-simple</link>
+	  <author>Sidhant Sharma</author>
+	  <pubDate>2017-01-06T00:00:00+05:30</pubDate>
+	  <guid>sidhant.io/kiss-keep-it-short-and-simple</guid>
+	  <description><![CDATA[
+	     <blockquote>
+  <p>We are moving from a world where computing power was scarce to a place where it now is almost limitless, and <strong>where the true scarce commodity is increasingly human attention</strong><br />
+– <a href="https://en.wikipedia.org/wiki/Satya_Nadella">Satya Nadella</a></p>
+</blockquote>
+
+<p>A painfully accurate quote by the CEO of one of the largest software companies out there, research has indeed discovered that the average human attention span has dropped from 12 seconds in 2000 to a mere 8.25 seconds in 2015 <sup><a href="https://advertising.microsoft.com/en/wwdocs/user/display/cl/researchreport/31966/en/microsoft-attention-spans-research-report.pdf">[1]</a></sup>. Yep, that’s 0.75 seconds lower than that of a goldfish.<br />
+Studies also show that the average reading speed for humans is roughly 240 WPM (Words per Minute) for the English language <sup><a href="http://iovs.arvojournals.org/article.aspx?articleid=2166061#90715174">[2]</a></sup>. Of course, the results vary for different languages, but it gives us an idea of the approximate WPM we can read. Multiply that by the average attention span and you’ll get the number of words a person would probably read before scrolling away from the text. That number comes out to be about 33. So, you’re very likely to have lost your reader’s attention by the 40<sup>th</sup> word or so; just like I have lost yours, right about now (or have I?).<br />
+In such a time where people are unlikely to read long texts, the KISS principle becomes our only hope to convey our message in 40 words or less. Enter, Automatic Text Summarization.</p>
+
+<p>In my final year of college, we are supposed to work on a project for 2 semesters, preferably trying to solve a real world problem. And what better a problem to solve than that of communicating with fellow humans quickly and effectively. We, a group of 4, decided to take up a project on Text Summarization, a subfield of Natural Language Processing.</p>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>A summary can defined as <em>“a text that is produced from one or more texts, that conveys important information in the original text(s), and that is no longer than half of the original text(s) and usually significantly less than that”</em>. Automatic text summarization is the process of extracting such a summary from given document(s).</p>
+
+<p>Summarization can be categorised broadly as either extractive or abstractive. Extractive summaries carry the information taken from the original keywords, phrases or sentences present in the original document. Abstractive summarization involves the creation of novel sentences that highlight main ideas of the original document. Although it is obvious that human generated summaries are typically abstractive, majority of the summarization research is on extractive summarization. It is important to note that extractive summarization systems give results better than abstractive summarization systems. This is primarily due the inherent problems in abstractive summarization, such as semantic representation, inference and natural language generation which are relatively harder compared to a data-driven approach such as sentence or keyword extraction. However, assignment and extraction of high quality keywords manually itself is an expensive and time-consuming task.<br />
+For our project, we took what can be called, a hybrid approach. We divided our project into two segments, the first where would find the best technique to extract keywords from a given text. In the second, we would use those keywords to create abstractive summaries (we intend to use neural networks for natural language generation). There are various algorithms for automatic keywords extraction that have been developed to save time and effort. We selected and compared performance of three popular keyword extraction techniques. The competing algorithms are <em>(drum rolls…)</em> <strong>TextRank</strong>, <strong>LexRank</strong> and <strong>LSA</strong> (Latent Semantic Analysis).  </p>
+
+<h4 id="textrank">TextRank</h4>
+<p>In their paper “TextRank: Bringing Order into Texts”, Rada Mihalcea and Paul Tarau <sup><a href="https://web.eecs.umich.edu/~mihalcea/papers/mihalcea.emnlp04.pdf">[3]</a></sup> introduced TextRank as the first graph-based automated text summarization algorithm. TextRank algorithm is a simple application of PageRank algorithm. I won’t be going into the details of PageRank, TextRank or the equations involved in the computations of keyword weights for the fear of boring you to death (read the paper if you’re curious, it’s really nice). However, I can show you an image that might help you in getting an idea of what TextRank does. The following image is a graph that was created from a text on diophantine equations and inequations (no idea what that is, but it works).</p>
+
+<p><img src="/assets/images/post_images/text_rank.png" alt="TextRank" style="width: 75%" /><br />
+The graph made above would then be subject to PageRank algorithm, which would eventually give us “numbers”, “inequations”, “linear”, “diophantine”, “upper”, “bounds”, “strict” as keywords. Neat!</p>
+
+<h4 id="lexrank">LexRank</h4>
+
+<p>LexRank is another graph-based algorithm for automated text summarization, introduced by Güneş Erkan and Dragomir R. Radev <sup><a href="http://www.jair.org/papers/paper1523.html">[4]</a></sup> A cluster of documents can be viewed as a network of sentences that are related to each other. Some sentences are more similar to each other while some others may share only a little information with the rest of the sentences. Like TextRank, LexRank too uses the PageRank algorithm for extracting top keywords. The key difference between the algorithms is the weighting function used for assigning weights to the edges of the graph. While TextRank simply assumes all weights to be unit weights and computes ranks like a typical PageRank execution, LexRank uses degrees of similarity between words and phrases and computes the centrality of the sentences to assign weights. Again, I wouldn’t delve in the details of the algorithm’s governing equations, as it would easily make this post thrice as long as it already is. You may read research paper by Erkan and Radev cited above if interested.</p>
+
+<h4 id="lsa">LSA</h4>
+
+<p>Another popular and effective extractive summarization approach developed was the use of Latent Semantic Analysis for generating text summaries. Latent semantic analysis (LSA) is a technique in natural language processing, in particular distributional semantics, of analyzing relationships between a set of documents and the terms they contain by producing a set of concepts related to the documents and terms. LSA assumes that words that are close in meaning will occur in similar pieces of text. LSA found its use in text summarization when Josef Steinberger and Karel Ježek <sup><a href="http://www.kiv.zcu.cz/~jstein/publikace/isim2004.pdf">[5]</a></sup> demonstrated its effectiveness in extracting summaries keywords from textual data. They introduced a generic summarization technique which uses the latent semantic analysis technique to identify semantically important sentences.</p>
+
+<h3 id="the-experiment">The Experiment</h3>
+
+<p>The first step for testing the effectiveness of these algorithms was selecting a dataset. The text should not be too specific about any particular genre of writing, nor be too generic to be summarized. After searching and comparing multiple datasets, we finalised the <a href="http://kavita-ganesan.com/opinosis-opinion-dataset">Opinosis Dataset</a> for use in our project. The dataset contains 51 review articles, each about 100 sentences long, obtained from Tripadvisor, Edmunds.com and Amazon.com. The second salient feature of the dataset is that it comes with a set of 4 to 5 hand written summaries of each of these articles, courtesy of the authors of the dataset <sup><a href="http://delivery.acm.org/10.1145/1880000/1873820/p340-ganesan.pdf?ip=122.161.24.15&amp;id=1873820&amp;acc=OPEN&amp;key=4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35%2E6D218144511F3437&amp;CFID=713303441&amp;CFTOKEN=61375673&amp;__acm__=1483690699_8134883f16f7700da0b0ca25aef6b57e">[6]</a></sup>. These summaries provide a perfect standard for comparing the relative performance of other algorithms.<br />
+Without explaining all of the code, I’ll quicky run you through the setup, which looks like this:</p>
+
+<p><img src="/assets/images/post_images/ats_system_setup.png" alt="" /></p>
+
+<p>The text is first preprocessed to strip out <a href="https://en.wikipedia.org/wiki/Stop_words">stopwords</a> and stem the words (using Porter2 English Snowball Stemmer) for removing word derivatives. These steps are an important part of any natural language processing activity as they remove the unimportant words and allow the algorithm to focus on root words instead of different forms of the same word.<br />
+Having preprocessed the texts, we can now feed them to the algorithms implementations. The algorithms were implemented in Python using the <code class="highlighter-rouge">sumy</code> python library. Each of the algorithms then output a set of keywords which were stored for evaluation.</p>
+
+<h3 id="evaluation">Evaluation</h3>
+
+<p>To evaluate the performance of the algorithms, we need a set of ‘gold’ keywords to compare the extracted keywords against. Here we used the human generated summaries to extract most frequent keywords. Only the keywords that appeared in more than half of the summaries were selected as ‘gold’ keywords for that particular article. We also measured the running time of each of the algorithms on the dataset.</p>
+
+<p>The evaluation metric we used was ROUGE-N metric from the <a href="http://www.berouge.com/Pages/default.aspx">ROUGE toolkit</a>. Since we are considering only single-word keywords, N is set to unity. In essence, the ROUGE-1 parameters simply computes the ratio of number of keywords correctly indentified (i.e. keywords in sample that also occur in the gold set) to the total number of gold reference set keywords.</p>
+
+<h3 id="results">Results</h3>
+
+<p>The following image summarizes our results (summary of a summarization experiment, so meta…):<br />
+<img src="/assets/images/post_images/ats_results.png" alt="" /></p>
+
+<p>The blue horizontal line denotes the ROUGE-1 score of human generated summaries calculated by k-fold cross validatoin of each of the summa for every topic. As we can see, TextRank came out to be the winner. With a modest running time and a near-human ROUGE-1 score, TextRank was finally selected as our keyword extraction technique for the second phase of the project.</p>
+
+<p>The code is available on <a href="https://github.com/TigerKid001/text_summarization_major">Github</a>.</p>
+
+<p>That’s all for now folks. Expect another post on this subject once we’re done with second part too. We’ll try to make a research paper out of it, if our work is any good. Till then,  </p>
+
+<blockquote>
+  <p><em><img src="/assets/images/vulcan_salute.png" alt=":vulcan_salute:" style="height: 1.75em; margin: 0px; padding: 0;display: inline-block; position: inherit; transform: translateX(0);" />    Live Long and Prosper</em></p>
+</blockquote>
+
+	  ]]></description>
+	</item>
+
 	<item>
 	  <title>Alfred appreciation post</title>
 	  <link>sidhant.io/alfred-appreciation-post</link>

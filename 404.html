@@ -82,5 +82,23 @@
      </script>
 
 
+    <script src="/assets/js/jquery-3.1.0.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(function() {
+            var gifLoc = "/assets/images/obiwan.gif";
+            var gunLoc = "/assets/images/scrollon.jpg";
+            $(".error-ghost").dblclick(function(ev) {
+                if ($(ev.target).attr("src") != gunLoc) {
+                    $(ev.target).attr("src", gifLoc);
+                    $(ev.target).attr("srcset", gifLoc);
+                }
+                setTimeout(function () {
+                    $(".error-ghost").attr("src", gunLoc);
+                    $(".error-ghost").attr("srcset", gunLoc);
+                    $(".error-link").text("Move Along. You saw nothing →");
+                }, 3500);
+            });
+        });
+    </script>
 </body>
 </html>
