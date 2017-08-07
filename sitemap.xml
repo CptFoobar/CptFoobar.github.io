@@ -73,7 +73,7 @@
     </url>
   
     <url>
-        <loc>http://sidhant.io/resume/</loc>
+        <loc>http://sidhant.io/licenses/</loc>
         
         <changefreq>monthly</changefreq>
         <priority>0.70</priority>
@@ -87,7 +87,7 @@
     </url>
   
     <url>
-        <loc>http://sidhant.io/licenses/</loc>
+        <loc>http://sidhant.io/resume/</loc>
         
         <changefreq>monthly</changefreq>
         <priority>0.70</priority>
@@ -164,7 +164,7 @@
     </url>
   
     <url>
-        <loc>http://sidhant.io/tag/Text%20Summarization/</loc>
+        <loc>http://sidhant.io/tag/Summarization/</loc>
         
         <changefreq>monthly</changefreq>
         <priority>0.70</priority>

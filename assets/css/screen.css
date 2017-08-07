@@ -178,8 +178,21 @@ table { border-collapse: collapse; border-spacing: 0; }
     -moz-transition: color 0.2s;
     -o-transition: color 0.2s;
     transition: color 0.2s;
-
 }
+
+
+
+.social-li:hover {
+    color: #0077b5 !important;
+}
+
+.social-gh:hover {
+    color: #333333 !important;
+}
+
+.social-email:hover {
+    color: rgb(255, 207, 0) !important;
+} 
 
 .social-fb:hover {
     color: #3b5998 !important;
@@ -600,10 +613,8 @@ body.nav-opened .nav-cover {
     margin-bottom: 0;
     text-align: left;
     overflow-y: auto;
-    -webkit-transition: -webkit-transform 0.5s ease,
-    opacity: 0.3s ease 0.7s;
-    transition: transform 0.5s ease,
-    opacity: 0.3s ease 0.7s;
+    -webkit-transition: -webkit-transform 0.5s ease, opacity 0.3s ease 0.7s;
+    transition: transform 0.5s ease;
 }
 
 body.nav-closed .nav {
@@ -614,10 +625,8 @@ body.nav-closed .nav {
 
 body.nav-opened .nav {
     opacity: 1;
-    -webkit-transition: -webkit-transform 0.3s ease,
-    opacity: 0s ease 0s;
-    transition: transform 0.3s ease,
-    opacity: 0s ease 0s;
+    -webkit-transition: -webkit-transform 0.3s ease, opacity 0s ease 0s;
+    transition: transform 0.3s ease, opacity 0s ease 0s;
     -webkit-transform: translate3D(0, 0, 0);
     -ms-transform: translate3D(0, 0, 0);
     transform: translate3D(0, 0, 0);
@@ -820,7 +829,7 @@ body.nav-opened .nav {
 }
 
 /* Appears in the top left corner of your home page */
-. {
+.blog-logo {
     display: block;
     float: left;
     background: none !important; /* Makes sure there is never a background */
