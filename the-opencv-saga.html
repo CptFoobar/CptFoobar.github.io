@@ -54,7 +54,7 @@
 
 
 </head>
-<body class="post-template nav-closed">
+<body class="home-template nav-closed">
 
     <div class="nav">
     <h3 class="nav-title">Menu</h3>
@@ -87,9 +87,7 @@
 
 <header class="main-header post-head " style="background-image: url(/assets/images/post_covers/opencv-cover.jpg) ">
     <nav class="main-nav  overlay  clearfix">
-        <a class="blog-logo" href="/"><img src="/assets/images/tk-logo.png" alt="Blog Logo" /></a>
         
-            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
         
     </nav>
 </header>
@@ -129,25 +127,25 @@
 
 <p>One such subject that has captured my imagination quite recently is Computer Vision, the magical technology that can make a computer ‘see’.</p>
 
-<p>It started about 2 weeks ago, when my friends and I were brainstorming on what to present as a Minor project. We were running late already (thanks to our first Minor project idea <a href="#minor-one"><sup>1</sup></a>). So, while we were randomly pitching ideas to each other, I suggested making an android application that can print the details of the objects in focus on the screen, in real time. And at this point, we all hopped on to the computer vision train, waving at the stations (aka project ideas) as we passed them. This we did till we reached a project idea that was (seemingly) small, practical and achievable within the given time frame.<br />
-The idea was simple. A basic software that will translate your hand gestures into commands for your computer. There was a discussion on what specific type of commands it would support (from general control like navigation through the file system, controlling brightness, volume etc to simply controlling a music application). It was later decided that we will support a rather wild-card entry, Google Chrome browser.<br />
+<p>It started about 2 weeks ago, when my friends and I were brainstorming on what to present as a Minor project. We were running late already (thanks to our first Minor project idea <a href="#minor-one"><sup>1</sup></a>). So, while we were randomly pitching ideas to each other, I suggested making an android application that can print the details of the objects in focus on the screen, in real time. And at this point, we all hopped on to the computer vision train, waving at the stations (aka project ideas) as we passed them. This we did till we reached a project idea that was (seemingly) small, practical and achievable within the given time frame.
+The idea was simple. A basic software that will translate your hand gestures into commands for your computer. There was a discussion on what specific type of commands it would support (from general control like navigation through the file system, controlling brightness, volume etc to simply controlling a music application). It was later decided that we will support a rather wild-card entry, Google Chrome browser.
 To anyone who follows this blog, Google Chrome would be a surprise. Yes, I know me+Chrome is not a duo you see frequently, but as they say, anything for science.</p>
 
 <p>So, that’s enough backstory. Now on to the good stuff. Being noobs in the field of image processing, we decided to stay with python, for it was more comfortable to most of the team (excluding me, I prefer C/C++. Always.) Anyway, the development started and we did our research,found and discussed some techniques and algorithms.</p>
 
-<p>Fast forward - Coding. The real good stuff.<br />
+<p>Fast forward - Coding. The real good stuff.
 There are a bunch of OpenCV tutorials available on the Internet, like <a href="http://opencvpython.blogspot.in/">this one</a> and <a href="https://www.pyimagesearch.com/">this one</a>. And of course, never forget to RTFM (OpenCV docs). This gave me a good head start for the task at hand.</p>
 
 <p>I won’t be going into details of the installation process (mainly because it is too boring and I need to catch up on sleep). So, hope you’ll figure it out. (Psst.. unlike me, Google doesn’t sleep)</p>
 
 <h4 id="say-cheese">Say ‘Cheese’!</h4>
 
-<p>First things first. Since our aim is to process gestures in real time, we obviously something to give us some sort of a real-time video input. A modern day contraption that can somehow capture the essence of vision and translate it into a digital stream of bytes. Something so….. screw it, enough Dora-the-explorer. We need a camera. A webcam is the first choice, for it is usually already there on your laptop. It gets tricky when you don’t have a laptop, or a dedicated webcam, as happened with one of our teammates.<br />
+<p>First things first. Since our aim is to process gestures in real time, we obviously something to give us some sort of a real-time video input. A modern day contraption that can somehow capture the essence of vision and translate it into a digital stream of bytes. Something so….. screw it, enough Dora-the-explorer. We need a camera. A webcam is the first choice, for it is usually already there on your laptop. It gets tricky when you don’t have a laptop, or a dedicated webcam, as happened with one of our teammates.
 Using a webcam with OpenCV is simple, as the following snippet shows:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="kn">import</span> <span class="nn">cv2</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 
 <span class="c">## Create a capture device instance</span>
 <span class="c">## For more:  http://docs.opencv.org/modules/highgui/doc/reading_and_writing_images_and_video.html#videocapture-videocapture</span>
@@ -161,13 +159,12 @@ Using a webcam with OpenCV is simple, as the following snippet shows:</p>
 
 <span class="c">## Release camera object when done</span>
 <span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<p>But not all hope is lost! Turns out, with a little bit of hacking around, it’s possible to use an android device with a camera for the purpose. <a href="https://play.google.com/store/apps/details?id=com.pas.webcam">Here</a> you can find a marvelous little application, <em>IP Webcam</em>, that allows you to locally stream from your mobile camera. You can simply view the stream on the browser/VLC of another device by keying in the IP and the port of the server you run (using the app).<br />
+<p>But not all hope is lost! Turns out, with a little bit of hacking around, it’s possible to use an android device with a camera for the purpose. <a href="https://play.google.com/store/apps/details?id=com.pas.webcam">Here</a> you can find a marvelous little application, <em>IP Webcam</em>, that allows you to locally stream from your mobile camera. You can simply view the stream on the browser/VLC of another device by keying in the IP and the port of the server you run (using the app).
 The tricky part is when you need to use it as a video feed and process it in OpenCV. This is where you need to have a work-around. But don’t worry, I saved you the trouble and whipped up this little script which would be useful. Just clone/download <a href="https://github.com/TigerKid001/AndroidCamFeed">this repo</a> or simply get the <code class="highlighter-rouge">[AndroidCamFeed](https://github.com/TigerKid001/AndroidCamFeed/blob/master/AndroidCamFeed.py)</code> file. The usage is simple and demonstrated in the <a href="https://github.com/TigerKid001/AndroidCamFeed/blob/master/AndroidCamFeed.py"><code class="highlighter-rouge">Example.py</code></a>. Import the module and use like you would use the cv2.VideoCapture; the interface is pretty much the same (which, by the way, is no coincidence). Here’s a snippet for example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c">## Import AndroidCamFeed module</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">## Import AndroidCamFeed module</span>
 <span class="kn">from</span> <span class="nn">AndroidCamFeed</span> <span class="kn">import</span> <span class="n">AndroidCamFeed</span>
 
 <span class="c">## set host = address of server, in &lt;IP&gt;:&lt;port&gt; format</span>
@@ -188,8 +185,7 @@ The tricky part is when you need to use it as a video feed and process it in Ope
 <span class="c">## Must release ACF object before exiting.</span>
 <span class="n">acf</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="a-sleight-of-hand">A sleight of hand</h4>
 
@@ -197,13 +193,12 @@ The tricky part is when you need to use it as a video feed and process it in Ope
 
 <p>The default input from your capture device is in RGB color space. This is the color space we see the world in, with our eyes. Though there are methods to detect skin (and thereby hand) from this color space, they may not be as effective as the others. So we change the color space of the image to the <a href="https://en.wikipedia.org/wiki/YCbCr">Y-Cr-Cb</a> color space. The transformation can be done with literally one line of code:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="n">imgYCC</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2YCR_CB</span><span class="p">)</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<p>Now that we have the image in the required format, we need to find a way to identify what range of the  Y-Cr-Cb values gives us the clearest view of the skin. Once we have skin, we can figure out the hand.<br />
+<p>Now that we have the image in the required format, we need to find a way to identify what range of the  Y-Cr-Cb values gives us the clearest view of the skin. Once we have skin, we can figure out the hand.
 There are again many options for finding the sweet spot. I’d recommend you do some reading/innovating of your own and find a range that best suits you. For help, you may consider reading through research papers such as <a href="http://arxiv.org/pdf/1212.0134.pdf">this</a>, <a href="http://people.sabanciuniv.edu/mcetin/publications/malima_SIU06.pdf">this</a> and <a href="https://www.google.co.in/webhp?hl=en#hl=en-IN&amp;q=elliptical+boundary+model+skin+color+detection">this</a>. There are plenty more so you can dig as deep as you want.</p>
 
 <p>I experimented both manually (by setting up trackbars and manually setting values to optimal range) and by using the elliptical boundary model for skin color detection. While manual settings offer a better and finer control, it’s a pain to adjust the values.</p>
@@ -214,7 +209,7 @@ There are again many options for finding the sweet spot. I’d recommend you do 
 
 <p>A little rough around the edges eh? To soften the rough edges, we can use this simple morphology snippet:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="c">## Used for erosion and dilation</span>
 <span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">size1</span><span class="p">,</span> <span class="n">size2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 
@@ -226,23 +221,21 @@ There are again many options for finding the sweet spot. I’d recommend you do 
 <span class="n">frame2</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_OPEN</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
 <span class="n">frame2</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_CLOSE</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>To smoothen it out more, we use <a href="https://en.wikipedia.org/wiki/Gaussian_blur">Gaussian Blur</a> and then <a href="http://docs.opencv.org/modules/imgproc/doc/miscellaneous_transformations.html">threshold</a> using the <a href="https://en.wikipedia.org/wiki/Otsu's_method">Otsu algorithm</a> as shown:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="c">## Here, (x, y) is a tuple denoting the Gaussian kernel size, with Gaussian kernel standard deviation ## in X direction being 0, (for Y direction, it is 0 by default)</span>
 <span class="n">imgYCC</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">imgYCC</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="c">## Set 0 and 255 to the desired minimum and maximum thresholds. (Psst.. experiment time)</span>
 <span class="n">ret</span><span class="p">,</span> <span class="n">imgYCC</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">imgYCC</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">THRESH_OTSU</span><span class="p">)</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p><em>yawnnn…</em> OK, so now we have a nice and smooth image to work on. Looking back at it all, it doesn’t look like we have a long way, but believe me, getting here the way we did is big task. Extracting the hand out of an RGB (or BGR, as it used in OpenCV) image is half the job (well, a little less than half, but you get the point). In the next post, we’ll discuss a little more about hand exatraction, specifically blob analysis. Then we’ll continue on to detecting the hand, and experiment with algorithms to accurately detect parts of the hand.</p>
 
-<p>And this is the point where I am looking at you, no expression, a blank poker face, hoping you’ll get the signal, say thanks and bid farewell.. No, I don’t mean you to go, it’s just.. I’m tired and there’s a lot more I’d like to talk about in more detail, but some other time. (Very soon, I promise). So, there you go. You can go on and experiment, research, play/mess with that code.<br />
+<p>And this is the point where I am looking at you, no expression, a blank poker face, hoping you’ll get the signal, say thanks and bid farewell.. No, I don’t mean you to go, it’s just.. I’m tired and there’s a lot more I’d like to talk about in more detail, but some other time. (Very soon, I promise). So, there you go. You can go on and experiment, research, play/mess with that code.
 And if you like, you can even check out our project <a href="http://github.com/TigerKid001/Dex">Dex</a>, as we call it. Help will be much appreciated ;)</p>
 
 <p>As a great wizard once said,</p>
@@ -251,12 +244,12 @@ And if you like, you can even check out our project <a href="http://github.com/T
   <p>Fly, you fools!</p>
 </blockquote>
 
-<p>Happy coding :)<br />
+<p>Happy coding :)
 <br /><br /></p>
 
 <hr />
 
-<p><strong><sup id="minor-one">1</sup></strong><br />
+<p><strong><sup id="minor-one">1</sup></strong>
 The first Minor project idea was that of an automated bot that would crack Google’s new NoCaptcha reCaptcha system by imitating organic mouse movements and selecting the correct images for the given keyword. Sadly, it was dropped because of time constraints.</p>
 
 
@@ -317,31 +310,6 @@ The first Minor project idea was that of an automated bot that would crack Googl
 
             <!-- Add Disqus Comments -->
             
-                <div id="disqus_thread"></div>
-<script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
-
-    var disqus_config = function () {
-        this.page.url = 'http://sidhant.io/the-opencv-saga';
-        this.page.identifier = 'sidhant.io/the-opencv-saga';
-    };
-
-    (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document,
-            s = d.createElement('script');
-
-        s.src = '//sidhant.disqus.com/embed.js';
-
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
-            
 
         </footer>
 
@@ -377,7 +345,7 @@ The first Minor project idea was that of an automated bot that would crack Googl
 
 
         <footer class="site-footer clearfix">
-          <section class="copyright"><a href="/author/tk">Sidhant Sharma</a> &copy; 2017</section>
+          <section class="copyright"><a href="/author/tk">Sidhant Sharma</a> &copy; 2018</section>
           <section class="licenses"><a href="/licenses">Licenses</a></section>
           <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
         </footer>

@@ -30,13 +30,12 @@
 
 <p>There were already some New Tab replacement add-ons for Firefox, but nothing like what I wanted. Oh, did I forget to tell what Tabbie (and now Blink) do? Silly me. Well, you know how there’s a tonne of websites and webpages you follow to keep you updated with stuff you like? You might enjoy some beautiful art and animations from Dribbble, or some tech news from TechCrunch or the likes. That’s exactly what they do. These extensions bring the latest news from around the world right to your New Tab page. Why new tab page? Because that is the one page you open the most, and yet never pay attention to. It’s the perfect spot to put some nice content and grab your attention. So there I was, spending most of my spare time in searching and experimenting things for Blink. If you read my [previous post] on Firefox add-ons, you’re probably all set already. If not, you might wanna go there and take a loot at how things are done in Firefox Add-on development. Simple stuff, Javascript mainly.  There were a few key checkpoints I am particularly fond of. So, here they are:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>                                <span class="nt">&lt;geek&gt;</span>
-</code></pre>
-</div>
-<p><strong>1.</strong><br />
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                <span class="nt">&lt;geek&gt;</span>
+</code></pre></div></div>
+<p><strong>1.</strong>
 Clearing the URL bar when opening a custom New Tab page. One thing we don’t want is to see an ugly url in the URL bar of the New Tab page. It should be empty, without fail. To do that in Firefox, we can use gInitialPages list of the browser. Adding a URL to this list makes Firefox show it as a blank url. So, adding our custom New Page’s url to this list should serve our purpose well. Here’s a code snippet that shows how to do this,</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">clearTabUrl</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">clearTabUrl</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">let</span> <span class="nx">windows</span> <span class="o">=</span> <span class="nx">windowMediator</span><span class="p">.</span><span class="nx">getEnumerator</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">windows</span><span class="p">.</span><span class="nx">hasMoreElements</span><span class="p">())</span> <span class="p">{</span>
         <span class="kd">let</span> <span class="nb">window</span> <span class="o">=</span> <span class="nx">windows</span><span class="p">.</span><span class="nx">getNext</span><span class="p">();</span>
@@ -44,13 +43,12 @@ Clearing the URL bar when opening a custom New Tab page. One thing we don’t wa
             <span class="nb">window</span><span class="p">.</span><span class="nx">gInitialPages</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">newTabURL</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>That does the trick. You see that I saved the current New Tab url for later use. That’s because currently the user cannot manually change the newtab.url property (unless they edit it from about:config page). So, it is very important to remove your url from this list when your add-on is uninstalled/disabled in order to restore previous settings. For that, we can simply set an unload listener for the add-on and remove the url from it. Something like</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">clearSettings</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">services</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">"browser.newtab.url"</span><span class="p">,</span> <span class="nx">oldNewTab</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">clearSettings</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">services</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s2">"browser.newtab.url"</span><span class="p">,</span> <span class="nx">oldNewTab</span><span class="p">);</span>
     <span class="kd">let</span> <span class="nx">windows</span> <span class="o">=</span> <span class="nx">windowMediator</span><span class="p">.</span><span class="nx">getEnumerator</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">windows</span><span class="p">.</span><span class="nx">hasMoreElements</span><span class="p">())</span> <span class="p">{</span>
         <span class="kd">let</span> <span class="nb">window</span> <span class="o">=</span> <span class="nx">windows</span><span class="p">.</span><span class="nx">getNext</span><span class="p">();</span>
@@ -58,19 +56,18 @@ Clearing the URL bar when opening a custom New Tab page. One thing we don’t wa
             <span class="nb">window</span><span class="p">.</span><span class="nx">gInitialPages</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">gInitialPages</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">newTabURL</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Ok, hate to admit, but I’m not a genius. I didn’t figure this out by myself. The credit goes to this post on <a href="https://mike.kaply.com/2012/06/21/best-practices-for-overriding-the-new-tab-page-with-your-extension/">Michael Kaply’s blog</a>. Check it out for more on overriding the new tab page <sup><a href="#new-sdk">1</a></sup>.</p>
 
-<p><strong>2.</strong><br />
-Another thing I’m particularly excited about is that Blink allows the users to configure their feeds. That is, you can add new content to your feed simply by adding the link to its RSS feed. (Yeah, Blink works on RSS). Making that part of Blink was a brainer. Not because it’s tough, but because it’s not so intuitive. I’ll give you a hint on how I managed it: simple-storage module and message-passing. Got it? No? Chill, the code for it is here. See the two pagemods and a couple of scripts that run when certain pages are loaded? That’s it. Those scripts are doing a classic Firefox add-on style message passing dance. That’s new feeds can be added and unwanted be removed, by just passing around the list of desired feeds.<br />
+<p><strong>2.</strong>
+Another thing I’m particularly excited about is that Blink allows the users to configure their feeds. That is, you can add new content to your feed simply by adding the link to its RSS feed. (Yeah, Blink works on RSS). Making that part of Blink was a brainer. Not because it’s tough, but because it’s not so intuitive. I’ll give you a hint on how I managed it: simple-storage module and message-passing. Got it? No? Chill, the code for it is here. See the two pagemods and a couple of scripts that run when certain pages are loaded? That’s it. Those scripts are doing a classic Firefox add-on style message passing dance. That’s new feeds can be added and unwanted be removed, by just passing around the list of desired feeds.
 Parsing the feed.</p>
 
-<p><strong>3.</strong><br />
+<p><strong>3.</strong>
 I know covering this would basically cover the whole add-on code, but sorry, can’t help it. This is the part I learned partly from here and partly by experimenting with Google Feed API and the DOM API. For a quick run-through, check this code out:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">addContent</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">addContent</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Parsing feed from: "</span> <span class="o">+</span> <span class="nx">url</span><span class="p">);</span>
   <span class="kd">var</span> <span class="nx">container</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'cards-container'</span><span class="p">);</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
@@ -95,18 +92,16 @@ I know covering this would basically cover the whole add-on code, but sorry, can
     <span class="p">},</span>
     <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"jqXHR: "</span> <span class="o">+</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">)</span> <span class="o">+</span>
-                    <span class="s2">"\nstatus: "</span> <span class="o">+</span> <span class="nx">textStatus</span> <span class="o">+</span> <span class="s2">"\nerror: "</span> <span class="o">+</span> <span class="nx">errorThrown</span><span class="p">);</span>
+                    <span class="s2">"</span><span class="err">\</span><span class="s2">nstatus: "</span> <span class="o">+</span> <span class="nx">textStatus</span> <span class="o">+</span> <span class="s2">"</span><span class="err">\</span><span class="s2">nerror: "</span> <span class="o">+</span> <span class="nx">errorThrown</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">});</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The method calls for getting card and image facilitate creating the material cards in which the news items are shown. It uses the <a href="http://materializecss.com/">Materialize CSS</a> framework. You can check the full code out <a href="https://github.com/TigerKid001/Blink/blob/master/data/sources/js/contentFiller.js">here</a>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>                                    <span class="nt">&lt;/geek&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                    <span class="nt">&lt;/geek&gt;</span>
+</code></pre></div></div>
 
 <p>So, that was that. Blink is available <a href="https://addons.mozilla.org/en-US/firefox/addon/blink/">here</a> for your evaluation. It’s ready for use by people, even though just v0.2.1 (It’s stable, don’t worry). Want a sneek-peak right away? here:</p>
 
@@ -114,10 +109,10 @@ I know covering this would basically cover the whole add-on code, but sorry, can
 
 <p>There are a couple more features I want to add to Blink. And honestly, I too feel a complete UI overhaul is required. But because of the imminent change in the Firefox SDK as declared by Mozilla <a href="https://blog.mozilla.org/addons/2015/08/21/the-future-of-developing-firefox-add-ons/">here</a>, some API features will be removed. (The one that concerns Blink, and even Owl for that matter, is the Chrome authority). So, I’ll pause the development of Blink till I know better. Feel free to check out the Blink’s source on Github, it’s under MIT License, so mess with it as you will!</p>
 
-<p>See you soon.<br />
+<p>See you soon.
 Stay Hungry, stay foolish!</p>
 
-<p><br /><br /><br />
+<p><br /><br />
 <sup>1</sup>: Since the writing of this post, a lot has changed in this part of the SDK. The above code worked only uptil Fx44.0. You might wanna look at Blink’s <a href="https://github.com/tigerkid001/blink">current source</a> or search <a href="https://stackoverflow.com">StackOverflow</a> for a more recent method.</p>
 
 	  ]]></description>
@@ -132,28 +127,25 @@ Stay Hungry, stay foolish!</p>
 	  <description><![CDATA[
 	     <p>Being a software developer usually means long hours of working on computer, staring at the screen as if the meaning of life was hidden somewhere in those lines of code. But developer or not, looking at bright screens for longer durations is very straining to the eyes for everyone. So I prefer setting my IDE’s theme to Darkula, or a similar dark theme, to save my eyes from being scorched. And have to admit, it’s very cozy. The nice and dark background with dim-florescent text soothes the eye like the cool brook water to the lonely traveler.</p>
 
-<p>All looks fine so far, but then suddenly, there is this function I need to use, but I can’t remember it’s correct usage. Or a weird error I haven’t seen before, and I can’t figure it out. And the only way out? Google. This is where the problem arises. The Internet has somehow developed a fondness towards bright white/ off-white backgrounds. Every typical website has a pale white background and text in black, links in blue. Regular Internet standards, can’t complain. But for someone who is just switching from a dark IDE screen to the browser, this transition can torch the eyes. (You’re more likely to understand this if you too like dark themes for your IDEs, or work a lot with Photoshop or Illustrator.)<br />
+<p>All looks fine so far, but then suddenly, there is this function I need to use, but I can’t remember it’s correct usage. Or a weird error I haven’t seen before, and I can’t figure it out. And the only way out? Google. This is where the problem arises. The Internet has somehow developed a fondness towards bright white/ off-white backgrounds. Every typical website has a pale white background and text in black, links in blue. Regular Internet standards, can’t complain. But for someone who is just switching from a dark IDE screen to the browser, this transition can torch the eyes. (You’re more likely to understand this if you too like dark themes for your IDEs, or work a lot with Photoshop or Illustrator.)
 And then one day, I decided I’ve had enough. I <em>needed</em> something to turn those glaring websites dark. Thus began a quest for browser extensions. I use Firefox as my default browser, <a href="http://addons.mozilla.org/">AMO</a> my only hope. Surprisingly enough, I couldn’t find an add-on that would do what I needed done. There were some that made an overlay on the webpage and displayed only the main content, doing away with distracting images and links. But nah, this ain’t what I want.</p>
 
 <p>So I figured, “Hey, if there isn’t a good add-on out there to do this, why not make one for myself”. And in this moment, the idea of Owl was born. I began with Mozilla’s blog post <a href="https://blog.mozilla.org/addons/2014/06/05/how-to-develop-firefox-extension/">“How to develop a Firefox extension”</a> and realized that this mini-project needs JavaScript. And I don’t know JS. Yet.</p>
 
-<p>First things first, I took a Udacity course on <a href="https://www.udacity.com/course/javascript-basics--ud804">JavaScript Basics</a> (nice course, too easy). Now that I had a basic idea of js, it was time to code.<br />
-I guess I’ll take a slight detour from the story and get you familiar with the Firefox add-on development process. First, you need to get the <a href="https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Installation">SDK</a>. Installation is simple, and the documentation fantastic. Just follow the link above and you’d be ready for dev even before you know it. (Psst.. One more thing, might wanna take a look at <a href="https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Getting_Started_(jpm)">jpm</a>. )<br />
+<p>First things first, I took a Udacity course on <a href="https://www.udacity.com/course/javascript-basics--ud804">JavaScript Basics</a> (nice course, too easy). Now that I had a basic idea of js, it was time to code.
+I guess I’ll take a slight detour from the story and get you familiar with the Firefox add-on development process. First, you need to get the <a href="https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Installation">SDK</a>. Installation is simple, and the documentation fantastic. Just follow the link above and you’d be ready for dev even before you know it. (Psst.. One more thing, might wanna take a look at <a href="https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Getting_Started_(jpm)">jpm</a>. )
 Installed and ready? Great. Let’s get our hand dirty with some code. To create a new add-on skeleton (booooo….skeleton…boooo..), pull up terminal and do</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>mkdir hellworld-addon
-</code></pre>
-</div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd </span>helloworld-addon
-</code></pre>
-</div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>jpm init              <span class="c"># initialized a new add-on skeleton</span>
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mkdir hellworld-addon
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>helloworld-addon
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jpm init              <span class="c"># initialized a new add-on skeleton</span>
+</code></pre></div></div>
 
 <p>Now JPM will ask you (a lot of) questions about the add-on you’re making. Put in whatever you want, or just keep hitting Enter for defaults. You can always change them later in the <code class="highlighter-rouge">package.json</code>.</p>
 
-<p>Tada, a new add-on has been created. But it doesn’t do much yet.<br />
+<p>Tada, a new add-on has been created. But it doesn’t do much yet.
 Anyways, back to the story. I too followed these steps and created skeleton for Owl add-on. Now comes the cool part. Code.</p>
 
 <p>I need a piece of code that would change the background of the whole webpage to some dark color I want, and change the text and link colors accordingly. For this, I came with my first amateur solution. We know that HTML webpages contain div-elements. Sometimes, lots of them. What if we iterate through all the div-elements of the webpage, and set a dark background for each of them. The code looked something like this:</p>
@@ -169,45 +161,41 @@ for(var i = 0; i &lt; divs.length; i++){
 
 <p>To compile and run an add-on, we simple execute</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>jpm run
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jpm run
+</code></pre></div></div>
 
 <p>If you’re on Linux (or Mac OS X), the run operation may fail saying</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>JPM <span class="o">[</span>error] Specify a Firefox binary to use with the <span class="sb">`</span>-b<span class="sb">`</span> flag.
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>JPM <span class="o">[</span>error] Specify a Firefox binary to use with the <span class="sb">`</span><span class="nt">-b</span><span class="sb">`</span> flag.
 JPM <span class="o">[</span>error] Error: spawn ENOENT
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This happens when jpm doesn’t know where Firefox is installed. To specify it the location of the Firefox binary, use the <code class="highlighter-rouge">-b</code> flag as:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>jpm run -b &lt;path/to/file&gt;
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jpm run <span class="nt">-b</span> &lt;path/to/file&gt;
+</code></pre></div></div>
 
-<p>The results were, well, bad. It worked well on Google homepage. But that was about it. Everywhere else, one or the other element was left out. This wasn’t working. At all.<br />
+<p>The results were, well, bad. It worked well on Google homepage. But that was about it. Everywhere else, one or the other element was left out. This wasn’t working. At all.
 So, back to the thinking chair. While surfing through the Add-on SDK documentation, I discovered that it was also possible to add CSS dynamically to webpages. So I dug a little deeper and figured out a way to add a seemingly-alright CSS to the webpages when they load. This time, the results were better. But still, no. Something wasn’t working. (Actually, a lot it wasn’t). Sometimes there’d be no change at all, sometimes the whole webpage would turn black. So Plan B failed too.</p>
 
 <p>Nevertheless, the need to protect my (rather our) eyes from the glaring white webpages was strong enough to keep me looking. A week later, I stumbled upon <a href="https://developer.mozilla.org/en/docs/Using_the_Stylesheet_Service">this</a>. Doesn’t look like much, but it is actually a way to attach style sheets to a webpages without disturbing other content. So, there I was trying to make this work. Thanks a good example I found online (sorry, lost the link), I wrote (copied) a CSS style sheet that could modify the webpage’s theme to what I want. (The final CSS I decided on was <a href="https://github.com/TigerKid001/Owl/blob/master/data/owlTheme.css">this</a>). Compile and run. Fingers crossed.</p>
 
-<p>Great Scott! It works! Though a couple of glitches, (some icons/images disappeared) but it was waaay better that any of the previous attempts. “That’s it!”, I said to myself. Now, all I need is an icon for this extension, and it’s ready to be published. Quick google search of ‘owl cartoon’ gave a cute looking owl with big-bright eyes. I knew this is the one. Got the image, quickly edited with GIMP, made grayscale versions and done! There we have it.<br />
+<p>Great Scott! It works! Though a couple of glitches, (some icons/images disappeared) but it was waaay better that any of the previous attempts. “That’s it!”, I said to myself. Now, all I need is an icon for this extension, and it’s ready to be published. Quick google search of ‘owl cartoon’ gave a cute looking owl with big-bright eyes. I knew this is the one. Got the image, quickly edited with GIMP, made grayscale versions and done! There we have it.
 To publish an extension, we are needed to bundle it up in .xpi file. Again, terminal to the rescue:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>jpm xpi
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jpm xpi
+</code></pre></div></div>
 
 <p>And there we have the xpi. Now, simply drag and drop this xpi into Firefox and it’ll install automatically. There you go, a ready-to-use homebrew add-on.</p>
 
-<p>Having made the add-on, I decided to publish it online, to the AMO. You know, maybe there are other people who need this? So I went ahead and published it <a href="https://addons.mozilla.org/en-US/firefox/addon/owl/">here</a>.<br />
+<p>Having made the add-on, I decided to publish it online, to the AMO. You know, maybe there are other people who need this? So I went ahead and published it <a href="https://addons.mozilla.org/en-US/firefox/addon/owl/">here</a>.
 Not even a week passed since I put it up online, when I got this email from <a href="http://www.ilovefreesoftware.com/">I <span>♥</span> Free Software</a> (a nice tech blog) that they have used my add-on and they really liked it :). They even sent me a badge to show off!</p>
 
 <p><img src="/assets/images/post_images/ilfs_review_badge.png" alt="I love Free Software 5-Star badge" /></p>
 
 <p>Is this amazing or what! Shout out to <a href="http://www.ilovefreesoftware.com/">I <span>♥</span> Free Software</a> for their awesome review.</p>
 
-<p>Signing off now,<br />
+<p>Signing off now,
 Enjoy!</p>
 
 <p>PS: The source code of the add-on is available on <a href="https://github.com/TigerKid001/Owl">Github</a> under MIT License. Feel free to play with it :)</p>

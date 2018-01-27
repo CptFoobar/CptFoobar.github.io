@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- [[! Document Settings ]] -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- [[! Page Meta ]] -->
     <title>Alfred appreciation post</title>
-    <meta name="description" content="Tale of a Tiger - As above, so below. As within, so without." />
+    <meta name="description" content="Tale of a Tiger - As above, so below. As within, so without.">
 
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="/favicon.ico" >
+    <link rel="shortcut icon" href="/favicon.ico">
 
     <!-- [[! Styles'n'Scripts ]] -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
-    <link rel="stylesheet" type="text/css"
-          href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
-        <link rel="canonical" href="/" />
-    <meta name="referrer" content="origin" />
-    <link rel="next" href="/page2/" />
+        <link rel="canonical" href="/">
+    <meta name="referrer" content="origin">
+    <link rel="next" href="/page2/">
 
-    <meta property="og:site_name" content="Tale of a Tiger" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Tale of a Tiger" />
-    <meta property="og:description" content="Developer Chronicles" />
-    <meta property="og:url" content="/" />
-    <meta property="og:image" content="/assets/images/site-cover.jpg" />
+    <meta property="og:site_name" content="Tale of a Tiger">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tale of a Tiger">
+    <meta property="og:description" content="Developer Chronicles">
+    <meta property="og:url" content="/">
+    <meta property="og:image" content="/assets/images/site-cover.jpg">
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Tale of a Tiger" />
-    <meta name="twitter:description" content="Developer Chronicles" />
-    <meta name="twitter:url" content="/" />
-    <meta name="twitter:image:src" content="/assets/images/site-cover.jpg" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tale of a Tiger">
+    <meta name="twitter:description" content="Developer Chronicles">
+    <meta name="twitter:url" content="/">
+    <meta name="twitter:image:src" content="/assets/images/site-cover.jpg">
 
     <script type="application/ld+json">
 {
@@ -49,12 +49,12 @@
 }
     </script>
 
-    <meta name="generator" content="Jekyll 3.0.0" />
-    <link rel="alternate" type="application/rss+xml" title="Tale of a Tiger" href="/rss.xml" />
+    <meta name="generator" content="Jekyll 3.0.0">
+    <link rel="alternate" type="application/rss+xml" title="Tale of a Tiger" href="/rss.xml">
 
 
 </head>
-<body class="post-template nav-closed">
+<body class="home-template nav-closed">
 
     <div class="nav">
     <h3 class="nav-title">Menu</h3>
@@ -87,9 +87,7 @@
 
 <header class="main-header post-head " style="background-image: url(/assets/images/post_covers/alfred_appreciation.jpg) ">
     <nav class="main-nav  overlay  clearfix">
-        <a class="blog-logo" href="/"><img src="/assets/images/tk-logo.png" alt="Blog Logo" /></a>
         
-            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
         
     </nav>
 </header>
@@ -108,11 +106,11 @@
                  | on
                 
                     
-                       <a href='/tag/Alfred'>Alfred</a>,
+                       <a href="/tag/Alfred">Alfred</a>,
                     
                 
                     
-                       <a href='/tag/Python'>Python</a>
+                       <a href="/tag/Python">Python</a>
                     
                 
                 
@@ -129,23 +127,20 @@
 
 <p>Serve the any directory over the localhost. You can specify a path to the directory you want to served, or you can just skip it and the current one will be served. Default port is <code class="highlighter-rouge">8021</code>, but you override that from the command line.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>alfred serve    <span class="c"># Serve current directory</span>
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>alfred serve    <span class="c"># Serve current directory</span>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>alfred serve --path /path/to/directory/   <span class="c"># Serve directory at given path</span>
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>alfred serve <span class="nt">--path</span> /path/to/directory/   <span class="c"># Serve directory at given path</span>
+</code></pre></div></div>
 
 <p>Now you may be wondering why the additional <code class="highlighter-rouge">serve</code> argument. One word, aesthetics.</p>
 
 <p><strong>Serve single files</strong></p>
 
-<p>It often happens that I just want to serve a single file, and not the whole directory. This can be because either I don’t want you to see what’s in that directory (things better left in the dark <img class="emoji" title=":expressionless:" alt=":expressionless:" src="https://assets.github.com/images/icons/emoji/unicode/1f611.png" height="20" width="20" align="absmiddle" />) or I’m too polite to make you sift through my deeply nested folders or excessive number of files for what you need. So simply,</p>
+<p>It often happens that I just want to serve a single file, and not the whole directory. This can be because either I don’t want you to see what’s in that directory (things better left in the dark <img class="emoji" title=":expressionless:" alt=":expressionless:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f611.png" height="20" width="20">) or I’m too polite to make you sift through my deeply nested folders or excessive number of files for what you need. So simply,</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>alfred serve --path /path/to/file     <span class="c"># Serve a file</span>
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>alfred serve <span class="nt">--path</span> /path/to/file     <span class="c"># Serve a file</span>
+</code></pre></div></div>
 
 <p>Yup, the same syntax. Just make it a path to a file and Alfred will serve it individually.</p>
 
@@ -153,9 +148,8 @@
 
 <p>Another cool thing I always find handy is sharing text snippets, code snippets or links. It’s too cumbersome to share such snippets on WhatsApp or Messenger. And Slack won’t work for people not in your team. So, here’s a quick command for it:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>alfred serve --text <span class="s1">'Lorem ipsum dolor set amit.'</span>
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>alfred serve <span class="nt">--text</span> <span class="s1">'Lorem ipsum dolor set amit.'</span>
+</code></pre></div></div>
 
 <p>There’s actually more than just this, so here’s a table of the parameters and what they do:</p>
 
@@ -172,11 +166,13 @@
       <td>show this help message and exit</td>
     </tr>
     <tr>
-      <td>-p <em>PORT</em>, –port <em>PORT</em></td>
+      <td>-p <em>PORT</em>, –port <em>PORT</em>
+</td>
       <td>specify port to host server on (default: 8021)</td>
     </tr>
     <tr>
-      <td>-c <em>COUNT_MAX</em>, –count-max <em>COUNT_MAX</em></td>
+      <td>-c <em>COUNT_MAX</em>, –count-max <em>COUNT_MAX</em>
+</td>
       <td>maximum number of times directory can be served (default: 10000)</td>
     </tr>
     <tr>
@@ -184,11 +180,13 @@
       <td>force the server to run on specified port (server won’t start if port unavailable)</td>
     </tr>
     <tr>
-      <td>-P <em>PATH</em>, –path <em>PATH</em></td>
+      <td>-P <em>PATH</em>, –path <em>PATH</em>
+</td>
       <td>specify path (file or directory) to be served (overrides –directory)</td>
     </tr>
     <tr>
-      <td>-t <em>TEXT</em>, –text <em>TEXT</em></td>
+      <td>-t <em>TEXT</em>, –text <em>TEXT</em>
+</td>
       <td>specify text to be served (enter text in quotes)</td>
     </tr>
   </tbody>
@@ -196,7 +194,7 @@
 
 <p>And of couse, all the code is available on <a href="https://github.com/tigerkid001/alfred">Github</a> under MIT License (as usual). So feel free to hack as you will.</p>
 
-<p>Yeah, I know what you’re thinking right now. <em>‘Why on EARTH would someone make such a big deal of so little a thing.’</em> Overkill, I get it. But I guess I just keep adding stuff to it that I often need, and accidentally made it this unnecessarily powerful command ine utility that has really no reason to be so. Ah well, typical me. And guessing by the way I tend to overdo things, you can expect some more “features” added to Alfred (I don’t know them yet either, but let’s see <img class="emoji" title=":wink:" alt=":wink:" src="https://assets.github.com/images/icons/emoji/unicode/1f609.png" height="20" width="20" align="absmiddle" />)</p>
+<p>Yeah, I know what you’re thinking right now. <em>‘Why on EARTH would someone make such a big deal of so little a thing.’</em> Overkill, I get it. But I guess I just keep adding stuff to it that I often need, and accidentally made it this unnecessarily powerful command ine utility that has really no reason to be so. Ah well, typical me. And guessing by the way I tend to overdo things, you can expect some more “features” added to Alfred (I don’t know them yet either, but let’s see <img class="emoji" title=":wink:" alt=":wink:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f609.png" height="20" width="20">)</p>
 
 
         </section>
@@ -237,49 +235,21 @@
 
             <section class="share">
                 <h4>Share this post</h4>
-                <a class="social-tw" href="http://twitter.com/share?text=Alfred appreciation post&amp;url=http://sidhant.ioalfred-appreciation-post"
-                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <a class="social-tw" href="http://twitter.com/share?text=Alfred%20appreciation%20post&amp;url=http://sidhant.ioalfred-appreciation-post" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <i class="fa fa-twitter fa-lg"></i>
                     <span class="hidden">Twitter</span>
                 </a>
-                <a class="social-fb" href="https://www.facebook.com/sharer/sharer.php?u=http://sidhant.ioalfred-appreciation-post"
-                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <a class="social-fb" href="https://www.facebook.com/sharer/sharer.php?u=http://sidhant.ioalfred-appreciation-post" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <i class="fa fa-facebook-official fa-lg"></i>
                     <span class="hidden">Facebook</span>
                 </a>
-                <a class="social-gp" href="https://plus.google.com/share?url=http://sidhant.ioalfred-appreciation-post"
-                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                <a class="social-gp" href="https://plus.google.com/share?url=http://sidhant.ioalfred-appreciation-post" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <i class="fa fa-google-plus fa-lg"></i>
                     <span class="hidden">Google+</span>
                 </a>
             </section>
 
             <!-- Add Disqus Comments -->
-            
-                <div id="disqus_thread"></div>
-<script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
-
-    var disqus_config = function () {
-        this.page.url = 'http://sidhant.io/alfred-appreciation-post';
-        this.page.identifier = 'sidhant.io/alfred-appreciation-post';
-    };
-
-    (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document,
-            s = d.createElement('script');
-
-        s.src = '//sidhant.disqus.com/embed.js';
-
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
             
 
         </footer>
@@ -305,7 +275,7 @@
         <a class="read-next-story" style="background-image: url(/assets/images/post_covers/kiss_cover.jpg)" href="/kiss-keep-it-short-and-simple">
             <section class="post">
                 <h2>KISS: Keep It Short and Simple</h2>
-                <p>> We are moving from a world where computing power was scarce to a place...</p>
+                <p>&gt; We are moving from a world where computing power was scarce to a place...</p>
             </section>
         </a>
     
@@ -316,7 +286,7 @@
 
 
         <footer class="site-footer clearfix">
-          <section class="copyright"><a href="/author/tk">Sidhant Sharma</a> &copy; 2017</section>
+          <section class="copyright"><a href="/author/tk">Sidhant Sharma</a> © 2018</section>
           <section class="licenses"><a href="/licenses">Licenses</a></section>
           <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
         </footer>

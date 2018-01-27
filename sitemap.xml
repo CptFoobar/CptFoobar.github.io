@@ -66,14 +66,7 @@
     </url>
   
     <url>
-        <loc>http://sidhant.io/get-in-touch.html</loc>
-        
-        <changefreq>monthly</changefreq>
-        <priority>0.70</priority>
-    </url>
-  
-    <url>
-        <loc>http://sidhant.io/licenses/</loc>
+        <loc>http://sidhant.io/get-in-touch</loc>
         
         <changefreq>monthly</changefreq>
         <priority>0.70</priority>
@@ -94,21 +87,14 @@
     </url>
   
     <url>
+        <loc>http://sidhant.io/licenses/</loc>
+        
+        <changefreq>monthly</changefreq>
+        <priority>0.70</priority>
+    </url>
+  
+    <url>
         <loc>http://sidhant.io/stuff-i-do/</loc>
-        
-        <changefreq>monthly</changefreq>
-        <priority>0.70</priority>
-    </url>
-  
-    <url>
-        <loc>http://sidhant.io/author/tk/</loc>
-        
-        <changefreq>monthly</changefreq>
-        <priority>0.70</priority>
-    </url>
-  
-    <url>
-        <loc>http://sidhant.io/author/tk/page2/</loc>
         
         <changefreq>monthly</changefreq>
         <priority>0.70</priority>
@@ -165,6 +151,20 @@
   
     <url>
         <loc>http://sidhant.io/tag/Summarization/</loc>
+        
+        <changefreq>monthly</changefreq>
+        <priority>0.70</priority>
+    </url>
+  
+    <url>
+        <loc>http://sidhant.io/author/tk/</loc>
+        
+        <changefreq>monthly</changefreq>
+        <priority>0.70</priority>
+    </url>
+  
+    <url>
+        <loc>http://sidhant.io/author/tk/page2/</loc>
         
         <changefreq>monthly</changefreq>
         <priority>0.70</priority>

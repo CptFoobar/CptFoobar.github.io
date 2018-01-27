@@ -54,7 +54,7 @@
 
 
 </head>
-<body class="post-template nav-closed">
+<body class="home-template nav-closed">
 
     <div class="nav">
     <h3 class="nav-title">Menu</h3>
@@ -87,9 +87,7 @@
 
 <header class="main-header post-head " style="background-image: url(/assets/images/post_covers/blink_cover.jpg) ">
     <nav class="main-nav  overlay  clearfix">
-        <a class="blog-logo" href="/"><img src="/assets/images/tk-logo.png" alt="Blog Logo" /></a>
         
-            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
         
     </nav>
 </header>
@@ -133,13 +131,12 @@
 
 <p>There were already some New Tab replacement add-ons for Firefox, but nothing like what I wanted. Oh, did I forget to tell what Tabbie (and now Blink) do? Silly me. Well, you know how there’s a tonne of websites and webpages you follow to keep you updated with stuff you like? You might enjoy some beautiful art and animations from Dribbble, or some tech news from TechCrunch or the likes. That’s exactly what they do. These extensions bring the latest news from around the world right to your New Tab page. Why new tab page? Because that is the one page you open the most, and yet never pay attention to. It’s the perfect spot to put some nice content and grab your attention. So there I was, spending most of my spare time in searching and experimenting things for Blink. If you read my [previous post] on Firefox add-ons, you’re probably all set already. If not, you might wanna go there and take a loot at how things are done in Firefox Add-on development. Simple stuff, Javascript mainly.  There were a few key checkpoints I am particularly fond of. So, here they are:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>                                <span class="nt">&lt;geek&gt;</span>
-</code></pre>
-</div>
-<p><strong>1.</strong><br />
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                <span class="nt">&lt;geek&gt;</span>
+</code></pre></div></div>
+<p><strong>1.</strong>
 Clearing the URL bar when opening a custom New Tab page. One thing we don’t want is to see an ugly url in the URL bar of the New Tab page. It should be empty, without fail. To do that in Firefox, we can use gInitialPages list of the browser. Adding a URL to this list makes Firefox show it as a blank url. So, adding our custom New Page’s url to this list should serve our purpose well. Here’s a code snippet that shows how to do this,</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">clearTabUrl</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">clearTabUrl</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">let</span> <span class="nx">windows</span> <span class="o">=</span> <span class="nx">windowMediator</span><span class="p">.</span><span class="nx">getEnumerator</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">windows</span><span class="p">.</span><span class="nx">hasMoreElements</span><span class="p">())</span> <span class="p">{</span>
         <span class="kd">let</span> <span class="nb">window</span> <span class="o">=</span> <span class="nx">windows</span><span class="p">.</span><span class="nx">getNext</span><span class="p">();</span>
@@ -147,13 +144,12 @@ Clearing the URL bar when opening a custom New Tab page. One thing we don’t wa
             <span class="nb">window</span><span class="p">.</span><span class="nx">gInitialPages</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">newTabURL</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>That does the trick. You see that I saved the current New Tab url for later use. That’s because currently the user cannot manually change the newtab.url property (unless they edit it from about:config page). So, it is very important to remove your url from this list when your add-on is uninstalled/disabled in order to restore previous settings. For that, we can simply set an unload listener for the add-on and remove the url from it. Something like</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">clearSettings</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">services</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">"browser.newtab.url"</span><span class="p">,</span> <span class="nx">oldNewTab</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">clearSettings</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">services</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s2">"browser.newtab.url"</span><span class="p">,</span> <span class="nx">oldNewTab</span><span class="p">);</span>
     <span class="kd">let</span> <span class="nx">windows</span> <span class="o">=</span> <span class="nx">windowMediator</span><span class="p">.</span><span class="nx">getEnumerator</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">windows</span><span class="p">.</span><span class="nx">hasMoreElements</span><span class="p">())</span> <span class="p">{</span>
         <span class="kd">let</span> <span class="nb">window</span> <span class="o">=</span> <span class="nx">windows</span><span class="p">.</span><span class="nx">getNext</span><span class="p">();</span>
@@ -161,19 +157,18 @@ Clearing the URL bar when opening a custom New Tab page. One thing we don’t wa
             <span class="nb">window</span><span class="p">.</span><span class="nx">gInitialPages</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">gInitialPages</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">newTabURL</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Ok, hate to admit, but I’m not a genius. I didn’t figure this out by myself. The credit goes to this post on <a href="https://mike.kaply.com/2012/06/21/best-practices-for-overriding-the-new-tab-page-with-your-extension/">Michael Kaply’s blog</a>. Check it out for more on overriding the new tab page <sup><a href="#new-sdk">1</a></sup>.</p>
 
-<p><strong>2.</strong><br />
-Another thing I’m particularly excited about is that Blink allows the users to configure their feeds. That is, you can add new content to your feed simply by adding the link to its RSS feed. (Yeah, Blink works on RSS). Making that part of Blink was a brainer. Not because it’s tough, but because it’s not so intuitive. I’ll give you a hint on how I managed it: simple-storage module and message-passing. Got it? No? Chill, the code for it is here. See the two pagemods and a couple of scripts that run when certain pages are loaded? That’s it. Those scripts are doing a classic Firefox add-on style message passing dance. That’s new feeds can be added and unwanted be removed, by just passing around the list of desired feeds.<br />
+<p><strong>2.</strong>
+Another thing I’m particularly excited about is that Blink allows the users to configure their feeds. That is, you can add new content to your feed simply by adding the link to its RSS feed. (Yeah, Blink works on RSS). Making that part of Blink was a brainer. Not because it’s tough, but because it’s not so intuitive. I’ll give you a hint on how I managed it: simple-storage module and message-passing. Got it? No? Chill, the code for it is here. See the two pagemods and a couple of scripts that run when certain pages are loaded? That’s it. Those scripts are doing a classic Firefox add-on style message passing dance. That’s new feeds can be added and unwanted be removed, by just passing around the list of desired feeds.
 Parsing the feed.</p>
 
-<p><strong>3.</strong><br />
+<p><strong>3.</strong>
 I know covering this would basically cover the whole add-on code, but sorry, can’t help it. This is the part I learned partly from here and partly by experimenting with Google Feed API and the DOM API. For a quick run-through, check this code out:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">addContent</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">addContent</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Parsing feed from: "</span> <span class="o">+</span> <span class="nx">url</span><span class="p">);</span>
   <span class="kd">var</span> <span class="nx">container</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'cards-container'</span><span class="p">);</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
@@ -198,18 +193,16 @@ I know covering this would basically cover the whole add-on code, but sorry, can
     <span class="p">},</span>
     <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">,</span> <span class="nx">textStatus</span><span class="p">,</span> <span class="nx">errorThrown</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"jqXHR: "</span> <span class="o">+</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">jqXHR</span><span class="p">)</span> <span class="o">+</span>
-                    <span class="s2">"\nstatus: "</span> <span class="o">+</span> <span class="nx">textStatus</span> <span class="o">+</span> <span class="s2">"\nerror: "</span> <span class="o">+</span> <span class="nx">errorThrown</span><span class="p">);</span>
+                    <span class="s2">"</span><span class="err">\</span><span class="s2">nstatus: "</span> <span class="o">+</span> <span class="nx">textStatus</span> <span class="o">+</span> <span class="s2">"</span><span class="err">\</span><span class="s2">nerror: "</span> <span class="o">+</span> <span class="nx">errorThrown</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">});</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The method calls for getting card and image facilitate creating the material cards in which the news items are shown. It uses the <a href="http://materializecss.com/">Materialize CSS</a> framework. You can check the full code out <a href="https://github.com/TigerKid001/Blink/blob/master/data/sources/js/contentFiller.js">here</a>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>                                    <span class="nt">&lt;/geek&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                    <span class="nt">&lt;/geek&gt;</span>
+</code></pre></div></div>
 
 <p>So, that was that. Blink is available <a href="https://addons.mozilla.org/en-US/firefox/addon/blink/">here</a> for your evaluation. It’s ready for use by people, even though just v0.2.1 (It’s stable, don’t worry). Want a sneek-peak right away? here:</p>
 
@@ -217,10 +210,10 @@ I know covering this would basically cover the whole add-on code, but sorry, can
 
 <p>There are a couple more features I want to add to Blink. And honestly, I too feel a complete UI overhaul is required. But because of the imminent change in the Firefox SDK as declared by Mozilla <a href="https://blog.mozilla.org/addons/2015/08/21/the-future-of-developing-firefox-add-ons/">here</a>, some API features will be removed. (The one that concerns Blink, and even Owl for that matter, is the Chrome authority). So, I’ll pause the development of Blink till I know better. Feel free to check out the Blink’s source on Github, it’s under MIT License, so mess with it as you will!</p>
 
-<p>See you soon.<br />
+<p>See you soon.
 Stay Hungry, stay foolish!</p>
 
-<p><br /><br /><br />
+<p><br /><br />
 <sup>1</sup>: Since the writing of this post, a lot has changed in this part of the SDK. The above code worked only uptil Fx44.0. You might wanna look at Blink’s <a href="https://github.com/tigerkid001/blink">current source</a> or search <a href="https://stackoverflow.com">StackOverflow</a> for a more recent method.</p>
 
 
@@ -281,31 +274,6 @@ Stay Hungry, stay foolish!</p>
 
             <!-- Add Disqus Comments -->
             
-                <div id="disqus_thread"></div>
-<script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
-
-    var disqus_config = function () {
-        this.page.url = 'http://sidhant.io/bling-bling-blink';
-        this.page.identifier = 'sidhant.io/bling-bling-blink';
-    };
-
-    (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document,
-            s = d.createElement('script');
-
-        s.src = '//sidhant.disqus.com/embed.js';
-
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
-            
 
         </footer>
 
@@ -341,7 +309,7 @@ Stay Hungry, stay foolish!</p>
 
 
         <footer class="site-footer clearfix">
-          <section class="copyright"><a href="/author/tk">Sidhant Sharma</a> &copy; 2017</section>
+          <section class="copyright"><a href="/author/tk">Sidhant Sharma</a> &copy; 2018</section>
           <section class="licenses"><a href="/licenses">Licenses</a></section>
           <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
         </footer>

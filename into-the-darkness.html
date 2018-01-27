@@ -54,7 +54,7 @@
 
 
 </head>
-<body class="post-template nav-closed">
+<body class="home-template nav-closed">
 
     <div class="nav">
     <h3 class="nav-title">Menu</h3>
@@ -87,9 +87,7 @@
 
 <header class="main-header post-head " style="background-image: url(/assets/images/post_covers/darkness_cover.jpg) ">
     <nav class="main-nav  overlay  clearfix">
-        <a class="blog-logo" href="/"><img src="/assets/images/tk-logo.png" alt="Blog Logo" /></a>
         
-            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
         
     </nav>
 </header>
@@ -123,28 +121,25 @@
 
             <p>Being a software developer usually means long hours of working on computer, staring at the screen as if the meaning of life was hidden somewhere in those lines of code. But developer or not, looking at bright screens for longer durations is very straining to the eyes for everyone. So I prefer setting my IDE’s theme to Darkula, or a similar dark theme, to save my eyes from being scorched. And have to admit, it’s very cozy. The nice and dark background with dim-florescent text soothes the eye like the cool brook water to the lonely traveler.</p>
 
-<p>All looks fine so far, but then suddenly, there is this function I need to use, but I can’t remember it’s correct usage. Or a weird error I haven’t seen before, and I can’t figure it out. And the only way out? Google. This is where the problem arises. The Internet has somehow developed a fondness towards bright white/ off-white backgrounds. Every typical website has a pale white background and text in black, links in blue. Regular Internet standards, can’t complain. But for someone who is just switching from a dark IDE screen to the browser, this transition can torch the eyes. (You’re more likely to understand this if you too like dark themes for your IDEs, or work a lot with Photoshop or Illustrator.)<br />
+<p>All looks fine so far, but then suddenly, there is this function I need to use, but I can’t remember it’s correct usage. Or a weird error I haven’t seen before, and I can’t figure it out. And the only way out? Google. This is where the problem arises. The Internet has somehow developed a fondness towards bright white/ off-white backgrounds. Every typical website has a pale white background and text in black, links in blue. Regular Internet standards, can’t complain. But for someone who is just switching from a dark IDE screen to the browser, this transition can torch the eyes. (You’re more likely to understand this if you too like dark themes for your IDEs, or work a lot with Photoshop or Illustrator.)
 And then one day, I decided I’ve had enough. I <em>needed</em> something to turn those glaring websites dark. Thus began a quest for browser extensions. I use Firefox as my default browser, <a href="http://addons.mozilla.org/">AMO</a> my only hope. Surprisingly enough, I couldn’t find an add-on that would do what I needed done. There were some that made an overlay on the webpage and displayed only the main content, doing away with distracting images and links. But nah, this ain’t what I want.</p>
 
 <p>So I figured, “Hey, if there isn’t a good add-on out there to do this, why not make one for myself”. And in this moment, the idea of Owl was born. I began with Mozilla’s blog post <a href="https://blog.mozilla.org/addons/2014/06/05/how-to-develop-firefox-extension/">“How to develop a Firefox extension”</a> and realized that this mini-project needs JavaScript. And I don’t know JS. Yet.</p>
 
-<p>First things first, I took a Udacity course on <a href="https://www.udacity.com/course/javascript-basics--ud804">JavaScript Basics</a> (nice course, too easy). Now that I had a basic idea of js, it was time to code.<br />
-I guess I’ll take a slight detour from the story and get you familiar with the Firefox add-on development process. First, you need to get the <a href="https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Installation">SDK</a>. Installation is simple, and the documentation fantastic. Just follow the link above and you’d be ready for dev even before you know it. (Psst.. One more thing, might wanna take a look at <a href="https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Getting_Started_(jpm)">jpm</a>. )<br />
+<p>First things first, I took a Udacity course on <a href="https://www.udacity.com/course/javascript-basics--ud804">JavaScript Basics</a> (nice course, too easy). Now that I had a basic idea of js, it was time to code.
+I guess I’ll take a slight detour from the story and get you familiar with the Firefox add-on development process. First, you need to get the <a href="https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Installation">SDK</a>. Installation is simple, and the documentation fantastic. Just follow the link above and you’d be ready for dev even before you know it. (Psst.. One more thing, might wanna take a look at <a href="https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Getting_Started_(jpm)">jpm</a>. )
 Installed and ready? Great. Let’s get our hand dirty with some code. To create a new add-on skeleton (booooo….skeleton…boooo..), pull up terminal and do</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>mkdir hellworld-addon
-</code></pre>
-</div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd </span>helloworld-addon
-</code></pre>
-</div>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>jpm init              <span class="c"># initialized a new add-on skeleton</span>
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mkdir hellworld-addon
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>helloworld-addon
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jpm init              <span class="c"># initialized a new add-on skeleton</span>
+</code></pre></div></div>
 
 <p>Now JPM will ask you (a lot of) questions about the add-on you’re making. Put in whatever you want, or just keep hitting Enter for defaults. You can always change them later in the <code class="highlighter-rouge">package.json</code>.</p>
 
-<p>Tada, a new add-on has been created. But it doesn’t do much yet.<br />
+<p>Tada, a new add-on has been created. But it doesn’t do much yet.
 Anyways, back to the story. I too followed these steps and created skeleton for Owl add-on. Now comes the cool part. Code.</p>
 
 <p>I need a piece of code that would change the background of the whole webpage to some dark color I want, and change the text and link colors accordingly. For this, I came with my first amateur solution. We know that HTML webpages contain div-elements. Sometimes, lots of them. What if we iterate through all the div-elements of the webpage, and set a dark background for each of them. The code looked something like this:</p>
@@ -160,45 +155,41 @@ for(var i = 0; i &lt; divs.length; i++){
 
 <p>To compile and run an add-on, we simple execute</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>jpm run
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jpm run
+</code></pre></div></div>
 
 <p>If you’re on Linux (or Mac OS X), the run operation may fail saying</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>JPM <span class="o">[</span>error] Specify a Firefox binary to use with the <span class="sb">`</span>-b<span class="sb">`</span> flag.
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>JPM <span class="o">[</span>error] Specify a Firefox binary to use with the <span class="sb">`</span><span class="nt">-b</span><span class="sb">`</span> flag.
 JPM <span class="o">[</span>error] Error: spawn ENOENT
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This happens when jpm doesn’t know where Firefox is installed. To specify it the location of the Firefox binary, use the <code class="highlighter-rouge">-b</code> flag as:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>jpm run -b &lt;path/to/file&gt;
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jpm run <span class="nt">-b</span> &lt;path/to/file&gt;
+</code></pre></div></div>
 
-<p>The results were, well, bad. It worked well on Google homepage. But that was about it. Everywhere else, one or the other element was left out. This wasn’t working. At all.<br />
+<p>The results were, well, bad. It worked well on Google homepage. But that was about it. Everywhere else, one or the other element was left out. This wasn’t working. At all.
 So, back to the thinking chair. While surfing through the Add-on SDK documentation, I discovered that it was also possible to add CSS dynamically to webpages. So I dug a little deeper and figured out a way to add a seemingly-alright CSS to the webpages when they load. This time, the results were better. But still, no. Something wasn’t working. (Actually, a lot it wasn’t). Sometimes there’d be no change at all, sometimes the whole webpage would turn black. So Plan B failed too.</p>
 
 <p>Nevertheless, the need to protect my (rather our) eyes from the glaring white webpages was strong enough to keep me looking. A week later, I stumbled upon <a href="https://developer.mozilla.org/en/docs/Using_the_Stylesheet_Service">this</a>. Doesn’t look like much, but it is actually a way to attach style sheets to a webpages without disturbing other content. So, there I was trying to make this work. Thanks a good example I found online (sorry, lost the link), I wrote (copied) a CSS style sheet that could modify the webpage’s theme to what I want. (The final CSS I decided on was <a href="https://github.com/TigerKid001/Owl/blob/master/data/owlTheme.css">this</a>). Compile and run. Fingers crossed.</p>
 
-<p>Great Scott! It works! Though a couple of glitches, (some icons/images disappeared) but it was waaay better that any of the previous attempts. “That’s it!”, I said to myself. Now, all I need is an icon for this extension, and it’s ready to be published. Quick google search of ‘owl cartoon’ gave a cute looking owl with big-bright eyes. I knew this is the one. Got the image, quickly edited with GIMP, made grayscale versions and done! There we have it.<br />
+<p>Great Scott! It works! Though a couple of glitches, (some icons/images disappeared) but it was waaay better that any of the previous attempts. “That’s it!”, I said to myself. Now, all I need is an icon for this extension, and it’s ready to be published. Quick google search of ‘owl cartoon’ gave a cute looking owl with big-bright eyes. I knew this is the one. Got the image, quickly edited with GIMP, made grayscale versions and done! There we have it.
 To publish an extension, we are needed to bundle it up in .xpi file. Again, terminal to the rescue:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>jpm xpi
-</code></pre>
-</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jpm xpi
+</code></pre></div></div>
 
 <p>And there we have the xpi. Now, simply drag and drop this xpi into Firefox and it’ll install automatically. There you go, a ready-to-use homebrew add-on.</p>
 
-<p>Having made the add-on, I decided to publish it online, to the AMO. You know, maybe there are other people who need this? So I went ahead and published it <a href="https://addons.mozilla.org/en-US/firefox/addon/owl/">here</a>.<br />
+<p>Having made the add-on, I decided to publish it online, to the AMO. You know, maybe there are other people who need this? So I went ahead and published it <a href="https://addons.mozilla.org/en-US/firefox/addon/owl/">here</a>.
 Not even a week passed since I put it up online, when I got this email from <a href="http://www.ilovefreesoftware.com/">I <span>♥</span> Free Software</a> (a nice tech blog) that they have used my add-on and they really liked it :). They even sent me a badge to show off!</p>
 
 <p><img src="/assets/images/post_images/ilfs_review_badge.png" alt="I love Free Software 5-Star badge" /></p>
 
 <p>Is this amazing or what! Shout out to <a href="http://www.ilovefreesoftware.com/">I <span>♥</span> Free Software</a> for their awesome review.</p>
 
-<p>Signing off now,<br />
+<p>Signing off now,
 Enjoy!</p>
 
 <p>PS: The source code of the add-on is available on <a href="https://github.com/TigerKid001/Owl">Github</a> under MIT License. Feel free to play with it :)</p>
@@ -261,31 +252,6 @@ Enjoy!</p>
 
             <!-- Add Disqus Comments -->
             
-                <div id="disqus_thread"></div>
-<script>
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-     */
-
-    var disqus_config = function () {
-        this.page.url = 'http://sidhant.io/into-the-darkness';
-        this.page.identifier = 'sidhant.io/into-the-darkness';
-    };
-
-    (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document,
-            s = d.createElement('script');
-
-        s.src = '//sidhant.disqus.com/embed.js';
-
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
-            
 
         </footer>
 
@@ -314,7 +280,7 @@ Enjoy!</p>
 
 
         <footer class="site-footer clearfix">
-          <section class="copyright"><a href="/author/tk">Sidhant Sharma</a> &copy; 2017</section>
+          <section class="copyright"><a href="/author/tk">Sidhant Sharma</a> &copy; 2018</section>
           <section class="licenses"><a href="/licenses">Licenses</a></section>
           <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/biomadeira/jasper">Jasper</a></section>
         </footer>
